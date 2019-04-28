@@ -4,7 +4,7 @@
 
 <p align="center">
     <a href="https://github.com/thuize/projectSculptor/blob/master/LICENSE.md">
-        <img src="https://img.shields.io/github/license/projectSculptor/projectSculptor.svg?longCache=true&style=for-the-badge"
+        <img src="https://img.shields.io/github/license/thuize/projectSculptor.svg?longCache=true&style=for-the-badge"
              alt="License" /></a>
 </p>
 
