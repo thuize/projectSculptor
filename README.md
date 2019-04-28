@@ -13,5 +13,5 @@
 
 | **DUPLA DO PROJETO:**                                            | 
 | ---------------------------------------------------------------- |
-|  • [Thuize Thainá](https://github.com/filipegmedeiros)           |
+|  • [Thuize Thainá](https://github.com/thuize)                    |
 |  • [Felipe Lima](https://github.com/FelipeLM1)                   |
