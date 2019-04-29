@@ -2,6 +2,15 @@
 #define SCULPTOR_H
 #include <iostream>
 
+/**
+ * @file  sculptor.h
+ * @brief  Definição da classe Scultor e seus respectivos
+ *      métodos para desenhar figuras geométricas.
+ * @author  Thuize Thainá
+ * @author  Felipe Lima
+ * @since  15/04/2019
+ * @date  29/04/2019
+ */
 struct Voxel {
   float red,green,blue; // Colors
   float transparency; // Transparency
