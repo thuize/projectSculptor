@@ -5,7 +5,7 @@
  * @author  Thuize Thainá
  * @author  Felipe Lima
  * @since  15/04/2019
- * @date  29/04/2019
+ * @date   29/04/2019
  */
 
 #ifndef SCULPTOR_H
