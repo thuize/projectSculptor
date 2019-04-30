@@ -1,7 +1,3 @@
-#ifndef SCULPTOR_H
-#define SCULPTOR_H
-#include <iostream>
-
 /**
  * @file  sculptor.h
  * @brief  Definição da classe Scultor e seus respectivos
@@ -11,11 +7,30 @@
  * @since  15/04/2019
  * @date  29/04/2019
  */
+
+#ifndef SCULPTOR_H
+#define SCULPTOR_H
+#include <iostream>
+
+/**
+ * @struct Voxel
+ * @brief Struct que representa um Voxel
+ * @details Um Voxel é definido como um struct e comporta as propriedades necessárias para permitir armazenar três tipos
+ * de informações: a cor do voxel, sua transparência e se ele deverá ser incluído ou não no modelo digital que representa a escultura.
+ */
 struct Voxel {
   float red,green,blue; // Colors
   float transparency; // Transparency
   bool isOn; // Included or not
 };
+
+/**
+ * @class   Sculptor sculptor.h
+ * @brief   Classe que representa um escultor digital
+ * @details  Os atributos do escultor são a matriz 3D de voxels, dimensões da matriz e cores. Os métodos definidos na classe
+ * sculptor são utilizados para manipular os voxels da matriz, modificando cores, desenhando e apagando voxels, além da criação
+ * de figuras geométricas como cubo, esfera e elipsóide, podendo ainda exportar os dados para arquivos VECT e OFF.
+ */
 class Sculptor{
 protected:
     Voxel ***v; // 3D matrix
