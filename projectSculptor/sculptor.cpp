@@ -23,9 +23,9 @@ Sculptor::Sculptor(int _nx, int _ny, int _nz){
             }
         }
 
-        for (int k=0; k<_nx; k++) {                    // Inicializa a matriz
-            for(int i=0; i<_ny; i++){
-                for(int j=0; j<_nz; j++){
+        for (int k=0; k<_nz; k++) {                    // Inicializa a matriz
+            for(int i=0; i<_nx; i++){
+                for(int j=0; j<_ny; j++){
                     v[k][i][j].isOn=false;
                     v[k][i][j].red   = 0;
                     v[k][i][j].green = 0;
@@ -97,53 +97,62 @@ void Sculptor::putEllipsoid(int xcenter, int ycenter, int zcenter, int rx, int r
 
 
     if ((rx*2)<=nx && (ry*2)<=ny && (rz*2)<=nz){
-        float n=0;
-        for (int k=0; k<nz; k++){
-            for (int i=0; i<nx; i++) {
-                for (int j=0; j<ny; j++) {
-                    n=((i-xcenter)/(float)rx)*((i-xcenter)/(float)rx)+
-                      ((j-ycenter)/(float)ry)*((j-ycenter)/(float)ry)+
-                      ((k-zcenter)/(float)rz)*((k-zcenter)/(float)rz);
+        float n;
+
+        for (int k=(zcenter-rz); k<=(zcenter+rz); k++){
+            for (int i=(xcenter-rx); i<=(xcenter+rx); i++) {
+                for (int j=(ycenter-ry); j<=(ycenter+ry); j++) {
+
+                    n=((((i-xcenter)/(float)rx)*((i-xcenter)/(float)rx))+
+                       (((j-ycenter)/(float)ry)*((j-ycenter)/(float)ry))+
+                       (((k-zcenter)/(float)rz)*((k-zcenter)/(float)rz)));
+
                     if (n<=1){
                         v[k][i][j].isOn  = true;
                         v[k][i][j].red   = r;
                         v[k][i][j].green = g;
                         v[k][i][j].blue  = b;
                         v[k][i][j].transparency = a;
+
                     }
+
                 }
             }
+
         }
-    for (int k=0; k<nz; k++){
-        for (int i=0; i<nx; i++) {
-            for (int j=0; j<ny; j++) {
-                    std::cout<<v[k][i][j].red;
+
+        for (int k=0; k<nz; k++){
+            for (int i=0; i<nx; i++) {
+                for (int j=0; j<ny; j++) {
+                    std::cout<< v[k][i][j].red;
                 }
                 std::cout << std::endl;
             }
             std::cout << std::endl;
         }
+
     }
     else{
-       std::cout << "Tamanho Invalido!" << std::endl;
+        std::cout << "Tamanho Invalido!" << std::endl;
     }
 }
 void Sculptor::cutEllipsoid(int xcenter, int ycenter, int zcenter, int rx, int ry, int rz)
 {
-    float n=0;
-    for (int k=0; k<(2*rz); k++){
-        for (int i=0; i<(2*rx); i++) {
-            for (int j=0; j<(2*ry); j++) {
-                n=((i-xcenter)/(float)rx)*((i-xcenter)/(float)rx)+
-                  ((j-ycenter)/(float)ry)*((j-ycenter)/(float)ry)+
-                  ((k-zcenter)/(float)rz)*((k-zcenter)/(float)rz);
+    float n;
+    for (int k=(zcenter-rz); k<=(zcenter+rz); k++){
+        for (int i=(xcenter-rx); i<=(xcenter+rx); i++) {
+            for (int j=(ycenter-ry); j<=(ycenter+ry); j++) {
+
+                n=((((i-xcenter)/(float)rx)*((i-xcenter)/(float)rx))+
+                   (((j-ycenter)/(float)ry)*((j-ycenter)/(float)ry))+
+                   (((k-zcenter)/(float)rz)*((k-zcenter)/(float)rz)));
+
                 if (n<=1){
                     v[k][i][j].isOn  = false;
                 }
             }
         }
     }
-
 }
 
 /*void Sculptor::writeVECT(string filename){
