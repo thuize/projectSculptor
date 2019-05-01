@@ -74,12 +74,53 @@ void Sculptor::cutVoxel(int x, int y, int z){
 
 void Sculptor::putBox(int x0, int x1, int y0, int y1, int z0, int z1)
 {
+    if ((x0>=0 && x1<=nx) && (y0>=0 && y1<=ny) && (z0>=0 && z1<=nz)){
+        for (int k=z0-1;k<z1;k++) {
+            for (int i=x0-1; i<x1 ; i++){
+                for (int j=y0-1; j<y1; j++) {
 
+                    v[k][i][j].isOn  = true;
+                    v[k][i][j].red   = r;
+                    v[k][i][j].green = g;
+                    v[k][i][j].blue  = b;
+                    v[k][i][j].transparency = a;
+                }
+            }
+
+        }
+        for (int k=0; k<nz; k++){
+            for (int i=0; i<nx; i++) {
+                for (int j=0; j<ny; j++) {
+                    std::cout<< v[k][i][j].red;
+                }
+                std::cout << std::endl;
+            }
+            std::cout << std::endl;
+        }
+    }
+    else{
+        std::cout << " Tamanho Invalido! " << std::endl;
+    }
 }
 
 void Sculptor::cutBox(int x0, int x1, int y0, int y1, int z0, int z1)
 {
+    if ((x0>=0 && x1<=nx) && (y0>=0 && y1<=ny) && (z0>=0 && z1<=nz)){
+    for (int k=z0-1;k<z1;k++) {
+        for (int i=x0-1; i<x1 ; i++){
+            for (int j=y0-1; j<y1; j++) {
 
+                v[k][i][j].isOn  = false;
+
+
+            }
+        }
+
+    }
+    }
+    else{
+         std::cout << " Tamanho Invalido! " << std::endl;
+    }
 }
 
 void Sculptor::putSphere(int xcenter, int ycenter, int zcenter, int radius)
@@ -121,7 +162,7 @@ void Sculptor::putEllipsoid(int xcenter, int ycenter, int zcenter, int rx, int r
 
         }
 
-        for (int k=0; k<nz; k++){
+        /*      for (int k=0; k<nz; k++){
             for (int i=0; i<nx; i++) {
                 for (int j=0; j<ny; j++) {
                     std::cout<< v[k][i][j].red;
@@ -129,7 +170,7 @@ void Sculptor::putEllipsoid(int xcenter, int ycenter, int zcenter, int rx, int r
                 std::cout << std::endl;
             }
             std::cout << std::endl;
-        }
+        }*/
 
     }
     else{
