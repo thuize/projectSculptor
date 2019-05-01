@@ -1,6 +1,6 @@
 
-# Created by https://www.gitignore.io/api/c++,qtcreator
-# Edit at https://www.gitignore.io/?templates=c++,qtcreator
+# Created by https://www.gitignore.io/api/c++,code,qtcreator
+# Edit at https://www.gitignore.io/?templates=c++,code,qtcreator
 
 ### C++ ###
 # Prerequisites
@@ -36,6 +36,13 @@
 *.out
 *.app
 
+### Code ###
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
 ### QtCreator ###
 # gitignore for Qt Creator like IDE for pure C/C++ project without Qt
 #
@@ -64,4 +71,4 @@
 # Qt Creator backups
 *.autosave
 
-# End of https://www.gitignore.io/api/c++,qtcreator
+# End of https://www.gitignore.io/api/c++,code,qtcreator

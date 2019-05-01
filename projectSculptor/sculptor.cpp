@@ -1,6 +1,8 @@
 #include "sculptor.h"
 #include <iostream>
-#include <cstring>
+#include <fstream>
+#include <string>
+using std::ofstream;
 
 Sculptor::Sculptor(int _nz, int _nx, int _ny){
 
@@ -13,20 +15,20 @@ Sculptor::Sculptor(int _nz, int _nx, int _ny){
 
         int i,j,k;
 
-        for(k=0; k<nz; k++) {
-            if (k < nz - 1) {
+        for(k=0; k<nz; k++){
+            if (k < nz - 1){
                 v[0][(k+1)*nx] = &(v[0][0][(k+1)*ny*nx]);
                 v[k+1] = &(v[0][(k+1)*nx]);
             }
 
-            for(i=0; i<nx; i++) {
+            for(i=0; i<nx; i++){
                 if (i>0) v[k][i] = v[k][i-1] + ny;
             }
         }
 
-        for (int k=0; k<nz; k++) {                    // Inicializa a matriz
-            for(int i=0; i<nx; i++){
-                for(int j=0; j<ny; j++){
+        for (k=0; k<nz; k++){                    // Inicializa a matriz
+            for(i=0; i<nx; i++){
+                for(j=0; j<ny; j++){
 
                     v[k][i][j].isOn=false;
                     v[k][i][j].red   = 0;
@@ -36,7 +38,6 @@ Sculptor::Sculptor(int _nz, int _nx, int _ny){
                 }
             }
         }
-
     }else{
         std::cout<<"Tamanho Invalido. " << std::endl;
     }
@@ -185,16 +186,10 @@ void Sculptor::cutSphere(int xcenter, int ycenter, int zcenter, int radius)
                         esfera= (((i-xcenter)*(i-xcenter)) + ((j-ycenter)*(j-ycenter)) + ((k-zcenter)*(k-zcenter)));
 
                         if (esfera<= (radius*radius)){
-
                             v[k][i][j].isOn  = false;
-
-
                         }
-
                     }
-
                 }
-
             }
         }
         else{
@@ -235,16 +230,16 @@ void Sculptor::putEllipsoid(int xcenter, int ycenter, int zcenter, int rx, int r
 
             }
 
-        for (int k=0; k<nz; k++){             // teste desenha matriz
-          for (int i=0; i<nx; i++) {
-              for (int j=0; j<ny; j++) {
-                  std::cout<< v[k][i][j].red;
-              }
-              std::cout << std::endl;
-          }
-          std::cout << std::endl;
-      }
-    }
+            for (int k=0; k<nz; k++){             // teste desenha matriz
+                for (int i=0; i<nx; i++) {
+                    for (int j=0; j<ny; j++) {
+                        std::cout<< v[k][i][j].red;
+                    }
+                    std::cout << std::endl;
+                }
+                std::cout << std::endl;
+            }
+        }
         else{
 
             std::cout << "Raio muito grande!" << std::endl;
@@ -280,7 +275,7 @@ void Sculptor::cutEllipsoid(int xcenter, int ycenter, int zcenter, int rx, int r
                 }
 
             }
-    }
+        }
         else{
 
             std::cout << "Raio muito grande!" << std::endl;
@@ -292,6 +287,50 @@ void Sculptor::cutEllipsoid(int xcenter, int ycenter, int zcenter, int rx, int r
 
 }
 
-/*void Sculptor::writeVECT(string filename){
+void Sculptor::writeVECT(string filename){
+    int nVoxel = 0;
+    string Teste = {"erro"};
+    ofstream outfile(filename);
+    outfile << "VECT" << endl;
 
-}*/
+    //Quantidade de voxels ativos
+    for (int i = 0; i < nx; i++){
+        for (int j = 0; j < ny; j++){
+            for (int k = 0; k < nz; k++){
+                if (v[k][i][j].isOn == true){
+                    nVoxel++;
+                }
+            }
+        }
+    }
+
+    //Escrevendo o número de poligonos, vertices e cores
+    outfile << nVoxel << " " << nVoxel << " " << nVoxel << endl;
+
+    //Número de vertices por poligono
+    for (int i = 0; i < nVoxel; i++){
+        outfile << "1" << " ";
+    }
+
+    outfile << endl;
+
+    //Número de cores por poligono
+    for (int i = 0; i < nVoxel; i++){
+        outfile << "1" << " ";
+    }
+
+    outfile << endl;
+
+    //Coordenadas do número de vertices
+    for (int i = 0; i < nx; i++){
+        for (int j = 0; j < ny; j++){
+            for (int k = 0; k < nz; k++){
+                if (v[k][i][j].isOn == 0){
+                    outfile << i << " " << j << " " << k << endl;
+                }
+            }
+        }
+    }
+
+    outfile.close();
+}

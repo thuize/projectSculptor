@@ -10,7 +10,11 @@
 
 #ifndef SCULPTOR_H
 #define SCULPTOR_H
-#include <iostream>
+#include<iostream>
+#include<fstream>
+#include<string>
+using std::string;
+using std::endl;
 
 /**
  * @struct Voxel
@@ -49,7 +53,7 @@ public:
     void putEllipsoid(int xcenter, int ycenter, int zcenter, int rx, int ry, int rz);
     void cutEllipsoid(int xcenter, int ycenter, int zcenter, int rx, int ry, int rz);
     //void writeOFF(string filename);
-    //void writeVECT(string filename);
+    void writeVECT(string filename);
 
 };
 
