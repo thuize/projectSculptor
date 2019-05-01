@@ -1,15 +1,28 @@
+/**
+ * @file	sculptor.cpp
+ * @brief	Implementação do construtor, destrutor, métodos de manipulação dos voxels
+ * e escrita em arquivos .vect e .off
+ * @author	Thuize Thainá
+ * @author  Felipe Lima
+ * @since	15/04/2019
+ * @date	01/05/2019
+ */
 #include "sculptor.h"
 #include <iostream>
 #include <fstream>
 #include <string>
 using std::ofstream;
 
+/**
+ * @details	Construtor da classe "sculptor".
+ */
 Sculptor::Sculptor(int _nz, int _nx, int _ny){
 
     if(_nz>0 && _nx>0 && _ny>0){
         nz=_nz; nx=_nx; ny=_ny;
 
-        v = new Voxel ** [nz];                      // Alocação da matriz
+        //Alocação da matriz
+        v = new Voxel ** [nz];
         v[0] = new Voxel * [nz*nx];
         v[0][0] = new Voxel [nz*nx*ny];
 
@@ -26,7 +39,8 @@ Sculptor::Sculptor(int _nz, int _nx, int _ny){
             }
         }
 
-        for (k=0; k<nz; k++){                    // Inicializa a matriz
+        //Inicialização de valores
+        for (k=0; k<nz; k++){
             for(i=0; i<nx; i++){
                 for(j=0; j<ny; j++){
 
@@ -43,13 +57,18 @@ Sculptor::Sculptor(int _nz, int _nx, int _ny){
     }
 }
 
+/**
+ * @details	Destrutor da classe "sculptor".
+ */
 Sculptor::~Sculptor(){
     delete[] v[0][0];
     delete[] v[0];
     delete[] v;
 }
 
-
+/**
+ * @details Método que define uma cor atual para o desenho.
+ */
 void Sculptor::setColor(float _r, float _g, float _b, float _a){    
     if (_r>=0 && _r<=1){r=_r;}
     else{r=0;};
@@ -64,6 +83,9 @@ void Sculptor::setColor(float _r, float _g, float _b, float _a){
     else{a=0;};
 }
 
+/**
+ * @details	Ativa um voxel na posição (x,y,z) e atribui ao mesmo a cor atual do desenho.
+ */
 void Sculptor::putVoxel(int x, int y, int z){    
     v[x][y][z].isOn  = true;
     v[x][y][z].red   = r;
@@ -72,10 +94,17 @@ void Sculptor::putVoxel(int x, int y, int z){
     v[x][y][z].transparency = a;
 }
 
+/**
+ * @details	Desativa o voxel na posição (x,y,z).
+ */
 void Sculptor::cutVoxel(int x, int y, int z){
     v[x][y][z].isOn  = false;
 }
 
+/**
+ * @details	Método que desenha um cubo. Ativa todos os voxels pertencentes ao intervalo correspondente
+ * aos parâmetros do método, atribuindo aos mesmos a cor atual do desenho.
+ */
 void Sculptor::putBox(int x0, int x1, int y0, int y1, int z0, int z1)
 {
     if ((x0>=0 && x1<=nx) && (y0>=0 && y1<=ny) && (z0>=0 && z1<=nz)){
@@ -107,6 +136,10 @@ void Sculptor::putBox(int x0, int x1, int y0, int y1, int z0, int z1)
     }
 }
 
+/**
+ * @details	Método que corta um cubo. Desativa todos os voxels pertencentes ao intervalo correspondente
+ * aos parâmetros do método.
+ */
 void Sculptor::cutBox(int x0, int x1, int y0, int y1, int z0, int z1)
 {
     if ((x0>=0 && x1<=nx) && (y0>=0 && y1<=ny) && (z0>=0 && z1<=nz)){
@@ -127,6 +160,10 @@ void Sculptor::cutBox(int x0, int x1, int y0, int y1, int z0, int z1)
     }
 }
 
+/**
+ * @details	Método que desenha uma esfera. Ativa todos os voxels que satisfazem à equação da esfera, 
+ * atribuindo aos mesmos a cor atual do desenho
+ */
 void Sculptor::putSphere(int xcenter, int ycenter, int zcenter, int radius)
 {
     float esfera;
@@ -174,6 +211,9 @@ void Sculptor::putSphere(int xcenter, int ycenter, int zcenter, int radius)
     }
 }
 
+/**
+ * @details	Método que corta uma esfera. Desativa todos os voxels que satisfazem à equação da esfera
+ */
 void Sculptor::cutSphere(int xcenter, int ycenter, int zcenter, int radius)
 {
     float esfera;
@@ -202,6 +242,10 @@ void Sculptor::cutSphere(int xcenter, int ycenter, int zcenter, int radius)
     }
 }
 
+/**
+ * @details	Método que desenha uma elipsóide. Ativa todos os voxels que satisfazem à equação da elipsóide, 
+ * atribuindo aos mesmos a cor atual do desenho
+ */
 void Sculptor::putEllipsoid(int xcenter, int ycenter, int zcenter, int rx, int ry, int rz)
 {
     if((zcenter>=rz) && (xcenter>=rx) && (ycenter>= ry)){
@@ -250,6 +294,10 @@ void Sculptor::putEllipsoid(int xcenter, int ycenter, int zcenter, int rx, int r
     }
 
 }
+
+/**
+ * @details	Método que corta uma elipsóide. Desativa todos os voxels que satisfazem à equação da elipsóide
+ */
 void Sculptor::cutEllipsoid(int xcenter, int ycenter, int zcenter, int rx, int ry, int rz)
 {
     if((zcenter>=rz) && (xcenter>=rx) && (ycenter>= ry)){
@@ -287,6 +335,9 @@ void Sculptor::cutEllipsoid(int xcenter, int ycenter, int zcenter, int rx, int r
 
 }
 
+/**
+ * @details	Método que grava a escultura em um arquivo .vect para permetir a visualização do desenho
+ */
 void Sculptor::writeVECT(string filename){
     int nVoxel = 0;
     string Teste = {"erro"};

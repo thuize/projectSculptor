@@ -12,35 +12,29 @@ Classe que representa um escultor digital.
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classSculptor_a014e3ef5517bf0e9d9e14486b6ac6433}\label{classSculptor_a014e3ef5517bf0e9d9e14486b6ac6433}} 
-{\bfseries Sculptor} (int \+\_\+nx, int \+\_\+ny, int \+\_\+nz)
+\mbox{\hyperlink{classSculptor_a014e3ef5517bf0e9d9e14486b6ac6433}{Sculptor}} (int \+\_\+nx, int \+\_\+ny, int \+\_\+nz)
 \item 
-\mbox{\Hypertarget{classSculptor_a5723e671e073ac310b6f385a7fdc9f9f}\label{classSculptor_a5723e671e073ac310b6f385a7fdc9f9f}} 
-void {\bfseries set\+Color} (float \+\_\+r, float \+\_\+g, float \+\_\+b, float \+\_\+a)
+\mbox{\hyperlink{classSculptor_a8f159bf97458326f16d2e238e11be7ff}{$\sim$\+Sculptor}} ()
 \item 
-\mbox{\Hypertarget{classSculptor_a4bdea3048b419d58e93074060eaa7b52}\label{classSculptor_a4bdea3048b419d58e93074060eaa7b52}} 
-void {\bfseries put\+Voxel} (int x, int y, int z)
+void \mbox{\hyperlink{classSculptor_a5723e671e073ac310b6f385a7fdc9f9f}{set\+Color}} (float \+\_\+r, float \+\_\+g, float \+\_\+b, float \+\_\+a)
 \item 
-\mbox{\Hypertarget{classSculptor_ad9d714a35fc8ae16d06eb5df37c3493c}\label{classSculptor_ad9d714a35fc8ae16d06eb5df37c3493c}} 
-void {\bfseries cut\+Voxel} (int x, int y, int z)
+void \mbox{\hyperlink{classSculptor_a4bdea3048b419d58e93074060eaa7b52}{put\+Voxel}} (int x, int y, int z)
 \item 
-\mbox{\Hypertarget{classSculptor_a311ad7a0fb83fc67ac1f378be8e99fe1}\label{classSculptor_a311ad7a0fb83fc67ac1f378be8e99fe1}} 
-void {\bfseries put\+Box} (int x0, int x1, int y0, int y1, int z0, int z1)
+void \mbox{\hyperlink{classSculptor_ad9d714a35fc8ae16d06eb5df37c3493c}{cut\+Voxel}} (int x, int y, int z)
 \item 
-\mbox{\Hypertarget{classSculptor_aa84a1b12b09e9e103fc8d78f8d1bc00f}\label{classSculptor_aa84a1b12b09e9e103fc8d78f8d1bc00f}} 
-void {\bfseries cut\+Box} (int x0, int x1, int y0, int y1, int z0, int z1)
+void \mbox{\hyperlink{classSculptor_a311ad7a0fb83fc67ac1f378be8e99fe1}{put\+Box}} (int x0, int x1, int y0, int y1, int z0, int z1)
 \item 
-\mbox{\Hypertarget{classSculptor_a794a2b6ee8fc8098fd6150cb46101fc6}\label{classSculptor_a794a2b6ee8fc8098fd6150cb46101fc6}} 
-void {\bfseries put\+Sphere} (int xcenter, int ycenter, int zcenter, int radius)
+void \mbox{\hyperlink{classSculptor_aa84a1b12b09e9e103fc8d78f8d1bc00f}{cut\+Box}} (int x0, int x1, int y0, int y1, int z0, int z1)
 \item 
-\mbox{\Hypertarget{classSculptor_a67ab8c0ba5116adb8af1d01ad373ac15}\label{classSculptor_a67ab8c0ba5116adb8af1d01ad373ac15}} 
-void {\bfseries cut\+Sphere} (int xcenter, int ycenter, int zcenter, int radius)
+void \mbox{\hyperlink{classSculptor_a794a2b6ee8fc8098fd6150cb46101fc6}{put\+Sphere}} (int xcenter, int ycenter, int zcenter, int radius)
 \item 
-\mbox{\Hypertarget{classSculptor_a093615b0c2b9b3a17a56300b9b939f39}\label{classSculptor_a093615b0c2b9b3a17a56300b9b939f39}} 
-void {\bfseries put\+Ellipsoid} (int xcenter, int ycenter, int zcenter, int rx, int ry, int rz)
+void \mbox{\hyperlink{classSculptor_a67ab8c0ba5116adb8af1d01ad373ac15}{cut\+Sphere}} (int xcenter, int ycenter, int zcenter, int radius)
 \item 
-\mbox{\Hypertarget{classSculptor_a18d2922c111c4c13653ee07d878151ad}\label{classSculptor_a18d2922c111c4c13653ee07d878151ad}} 
-void {\bfseries cut\+Ellipsoid} (int xcenter, int ycenter, int zcenter, int rx, int ry, int rz)
+void \mbox{\hyperlink{classSculptor_a093615b0c2b9b3a17a56300b9b939f39}{put\+Ellipsoid}} (int xcenter, int ycenter, int zcenter, int rx, int ry, int rz)
+\item 
+void \mbox{\hyperlink{classSculptor_a18d2922c111c4c13653ee07d878151ad}{cut\+Ellipsoid}} (int xcenter, int ycenter, int zcenter, int rx, int ry, int rz)
+\item 
+void \mbox{\hyperlink{classSculptor_a200442de17ed45b7a1ece728145a2ddf}{write\+V\+E\+CT}} (string filename)
 \end{DoxyCompactItemize}
 \subsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
@@ -76,7 +70,85 @@ Classe que representa um escultor digital.
 
 Os atributos do escultor são a matriz 3D de voxels, dimensões da matriz e cores. Os métodos definidos na classe sculptor são utilizados para manipular os voxels da matriz, modificando cores, desenhando e apagando voxels, além da criação de figuras geométricas como cubo, esfera e elipsóide, podendo ainda exportar os dados para arquivos V\+E\+CT e O\+FF. 
 
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classSculptor_a014e3ef5517bf0e9d9e14486b6ac6433}\label{classSculptor_a014e3ef5517bf0e9d9e14486b6ac6433}} 
+\index{Sculptor@{Sculptor}!Sculptor@{Sculptor}}
+\index{Sculptor@{Sculptor}!Sculptor@{Sculptor}}
+\subsubsection{\texorpdfstring{Sculptor()}{Sculptor()}}
+{\footnotesize\ttfamily Sculptor\+::\+Sculptor (\begin{DoxyParamCaption}\item[{int}]{\+\_\+nz,  }\item[{int}]{\+\_\+nx,  }\item[{int}]{\+\_\+ny }\end{DoxyParamCaption})}
+
+Construtor da classe \char`\"{}sculptor\char`\"{}. \mbox{\Hypertarget{classSculptor_a8f159bf97458326f16d2e238e11be7ff}\label{classSculptor_a8f159bf97458326f16d2e238e11be7ff}} 
+\index{Sculptor@{Sculptor}!````~Sculptor@{$\sim$Sculptor}}
+\index{````~Sculptor@{$\sim$Sculptor}!Sculptor@{Sculptor}}
+\subsubsection{\texorpdfstring{$\sim$Sculptor()}{~Sculptor()}}
+{\footnotesize\ttfamily Sculptor\+::$\sim$\+Sculptor (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Destrutor da classe \char`\"{}sculptor\char`\"{}. 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classSculptor_aa84a1b12b09e9e103fc8d78f8d1bc00f}\label{classSculptor_aa84a1b12b09e9e103fc8d78f8d1bc00f}} 
+\index{Sculptor@{Sculptor}!cutBox@{cutBox}}
+\index{cutBox@{cutBox}!Sculptor@{Sculptor}}
+\subsubsection{\texorpdfstring{cutBox()}{cutBox()}}
+{\footnotesize\ttfamily void Sculptor\+::cut\+Box (\begin{DoxyParamCaption}\item[{int}]{x0,  }\item[{int}]{x1,  }\item[{int}]{y0,  }\item[{int}]{y1,  }\item[{int}]{z0,  }\item[{int}]{z1 }\end{DoxyParamCaption})}
+
+Método que corta um cubo. Desativa todos os voxels pertencentes ao intervalo correspondente aos parâmetros do método. \mbox{\Hypertarget{classSculptor_a18d2922c111c4c13653ee07d878151ad}\label{classSculptor_a18d2922c111c4c13653ee07d878151ad}} 
+\index{Sculptor@{Sculptor}!cutEllipsoid@{cutEllipsoid}}
+\index{cutEllipsoid@{cutEllipsoid}!Sculptor@{Sculptor}}
+\subsubsection{\texorpdfstring{cutEllipsoid()}{cutEllipsoid()}}
+{\footnotesize\ttfamily void Sculptor\+::cut\+Ellipsoid (\begin{DoxyParamCaption}\item[{int}]{xcenter,  }\item[{int}]{ycenter,  }\item[{int}]{zcenter,  }\item[{int}]{rx,  }\item[{int}]{ry,  }\item[{int}]{rz }\end{DoxyParamCaption})}
+
+Método que corta uma elipsóide. Desativa todos os voxels que satisfazem à equação da elipsóide \mbox{\Hypertarget{classSculptor_a67ab8c0ba5116adb8af1d01ad373ac15}\label{classSculptor_a67ab8c0ba5116adb8af1d01ad373ac15}} 
+\index{Sculptor@{Sculptor}!cutSphere@{cutSphere}}
+\index{cutSphere@{cutSphere}!Sculptor@{Sculptor}}
+\subsubsection{\texorpdfstring{cutSphere()}{cutSphere()}}
+{\footnotesize\ttfamily void Sculptor\+::cut\+Sphere (\begin{DoxyParamCaption}\item[{int}]{xcenter,  }\item[{int}]{ycenter,  }\item[{int}]{zcenter,  }\item[{int}]{radius }\end{DoxyParamCaption})}
+
+Método que corta uma esfera. Desativa todos os voxels que satisfazem à equação da esfera \mbox{\Hypertarget{classSculptor_ad9d714a35fc8ae16d06eb5df37c3493c}\label{classSculptor_ad9d714a35fc8ae16d06eb5df37c3493c}} 
+\index{Sculptor@{Sculptor}!cutVoxel@{cutVoxel}}
+\index{cutVoxel@{cutVoxel}!Sculptor@{Sculptor}}
+\subsubsection{\texorpdfstring{cutVoxel()}{cutVoxel()}}
+{\footnotesize\ttfamily void Sculptor\+::cut\+Voxel (\begin{DoxyParamCaption}\item[{int}]{x,  }\item[{int}]{y,  }\item[{int}]{z }\end{DoxyParamCaption})}
+
+Desativa o voxel na posição (x,y,z). \mbox{\Hypertarget{classSculptor_a311ad7a0fb83fc67ac1f378be8e99fe1}\label{classSculptor_a311ad7a0fb83fc67ac1f378be8e99fe1}} 
+\index{Sculptor@{Sculptor}!putBox@{putBox}}
+\index{putBox@{putBox}!Sculptor@{Sculptor}}
+\subsubsection{\texorpdfstring{putBox()}{putBox()}}
+{\footnotesize\ttfamily void Sculptor\+::put\+Box (\begin{DoxyParamCaption}\item[{int}]{x0,  }\item[{int}]{x1,  }\item[{int}]{y0,  }\item[{int}]{y1,  }\item[{int}]{z0,  }\item[{int}]{z1 }\end{DoxyParamCaption})}
+
+Método que desenha um cubo. Ativa todos os voxels pertencentes ao intervalo correspondente aos parâmetros do método, atribuindo aos mesmos a cor atual do desenho. \mbox{\Hypertarget{classSculptor_a093615b0c2b9b3a17a56300b9b939f39}\label{classSculptor_a093615b0c2b9b3a17a56300b9b939f39}} 
+\index{Sculptor@{Sculptor}!putEllipsoid@{putEllipsoid}}
+\index{putEllipsoid@{putEllipsoid}!Sculptor@{Sculptor}}
+\subsubsection{\texorpdfstring{putEllipsoid()}{putEllipsoid()}}
+{\footnotesize\ttfamily void Sculptor\+::put\+Ellipsoid (\begin{DoxyParamCaption}\item[{int}]{xcenter,  }\item[{int}]{ycenter,  }\item[{int}]{zcenter,  }\item[{int}]{rx,  }\item[{int}]{ry,  }\item[{int}]{rz }\end{DoxyParamCaption})}
+
+Método que desenha uma elipsóide. Ativa todos os voxels que satisfazem à equação da elipsóide, atribuindo aos mesmos a cor atual do desenho \mbox{\Hypertarget{classSculptor_a794a2b6ee8fc8098fd6150cb46101fc6}\label{classSculptor_a794a2b6ee8fc8098fd6150cb46101fc6}} 
+\index{Sculptor@{Sculptor}!putSphere@{putSphere}}
+\index{putSphere@{putSphere}!Sculptor@{Sculptor}}
+\subsubsection{\texorpdfstring{putSphere()}{putSphere()}}
+{\footnotesize\ttfamily void Sculptor\+::put\+Sphere (\begin{DoxyParamCaption}\item[{int}]{xcenter,  }\item[{int}]{ycenter,  }\item[{int}]{zcenter,  }\item[{int}]{radius }\end{DoxyParamCaption})}
+
+Método que desenha uma esfera. Ativa todos os voxels que satisfazem à equação da esfera, atribuindo aos mesmos a cor atual do desenho \mbox{\Hypertarget{classSculptor_a4bdea3048b419d58e93074060eaa7b52}\label{classSculptor_a4bdea3048b419d58e93074060eaa7b52}} 
+\index{Sculptor@{Sculptor}!putVoxel@{putVoxel}}
+\index{putVoxel@{putVoxel}!Sculptor@{Sculptor}}
+\subsubsection{\texorpdfstring{putVoxel()}{putVoxel()}}
+{\footnotesize\ttfamily void Sculptor\+::put\+Voxel (\begin{DoxyParamCaption}\item[{int}]{x,  }\item[{int}]{y,  }\item[{int}]{z }\end{DoxyParamCaption})}
+
+Ativa um voxel na posição (x,y,z) e atribui ao mesmo a cor atual do desenho. \mbox{\Hypertarget{classSculptor_a5723e671e073ac310b6f385a7fdc9f9f}\label{classSculptor_a5723e671e073ac310b6f385a7fdc9f9f}} 
+\index{Sculptor@{Sculptor}!setColor@{setColor}}
+\index{setColor@{setColor}!Sculptor@{Sculptor}}
+\subsubsection{\texorpdfstring{setColor()}{setColor()}}
+{\footnotesize\ttfamily void Sculptor\+::set\+Color (\begin{DoxyParamCaption}\item[{float}]{\+\_\+r,  }\item[{float}]{\+\_\+g,  }\item[{float}]{\+\_\+b,  }\item[{float}]{\+\_\+a }\end{DoxyParamCaption})}
+
+Método que define uma cor atual para o desenho. \mbox{\Hypertarget{classSculptor_a200442de17ed45b7a1ece728145a2ddf}\label{classSculptor_a200442de17ed45b7a1ece728145a2ddf}} 
+\index{Sculptor@{Sculptor}!writeVECT@{writeVECT}}
+\index{writeVECT@{writeVECT}!Sculptor@{Sculptor}}
+\subsubsection{\texorpdfstring{writeVECT()}{writeVECT()}}
+{\footnotesize\ttfamily void Sculptor\+::write\+V\+E\+CT (\begin{DoxyParamCaption}\item[{string}]{filename }\end{DoxyParamCaption})}
+
+Método que grava a escultura em um arquivo .vect para permetir a visualização do desenho 
+
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{sculptor_8h}{sculptor.\+h}}\item 
-sculptor.\+cpp\end{DoxyCompactItemize}
+\mbox{\hyperlink{sculptor_8cpp}{sculptor.\+cpp}}\end{DoxyCompactItemize}
