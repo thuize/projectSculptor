@@ -171,10 +171,10 @@ void Sculptor::putSphere(int xcenter, int ycenter, int zcenter, int radius)
     if((zcenter>=radius) && (xcenter>=radius) && (ycenter>= radius)){
         if(((xcenter+radius)<=nx) && ((ycenter+radius)<=ny) && ((zcenter+radius)<=nz)){
             for (int k=zcenter-radius; k<zcenter+radius; k++) {
-                for (int i=xcenter- radius; i< xcenter+radius; i++) {
-                    for (int j=ycenter-radius; j<ycenter+radius; j++){
+                for (int i=ycenter-radius; i< ycenter+radius; i++) {
+                    for (int j=xcenter-radius; j<xcenter+radius; j++){
 
-                        esfera= (((i-xcenter)*(i-xcenter)) + ((j-ycenter)*(j-ycenter)) + ((k-zcenter)*(k-zcenter)));
+                        esfera= (((i-ycenter)*(i-ycenter)) + ((j-xcenter)*(j-xcenter)) + ((k-zcenter)*(k-zcenter)));
 
                         if (esfera<= (radius*radius)){
 
@@ -220,8 +220,8 @@ void Sculptor::cutSphere(int xcenter, int ycenter, int zcenter, int radius)
     if((zcenter>=radius) && (xcenter>=radius) && (ycenter>= radius)){
         if(((xcenter+radius)<=nx) && ((ycenter+radius)<=ny) && ((zcenter+radius)<=nz)){
             for (int k=zcenter-radius; k<zcenter+radius; k++) {
-                for (int i=xcenter- radius; i< xcenter+radius; i++) {
-                    for (int j=ycenter-radius; j<ycenter+radius; j++){
+                for (int i=ycenter- radius; i< ycenter+radius; i++) {
+                    for (int j=xcenter-radius; j<xcenter+radius; j++){
 
                         esfera= (((i-xcenter)*(i-xcenter)) + ((j-ycenter)*(j-ycenter)) + ((k-zcenter)*(k-zcenter)));
 
@@ -249,15 +249,15 @@ void Sculptor::cutSphere(int xcenter, int ycenter, int zcenter, int radius)
 void Sculptor::putEllipsoid(int xcenter, int ycenter, int zcenter, int rx, int ry, int rz)
 {
     if((zcenter>=rz) && (xcenter>=rx) && (ycenter>= ry)){
-        if(((xcenter+rx)<=nx) && ((ycenter+ry)<=ny) && ((zcenter+rz)<=nz)){
+        if(((xcenter+rx)<=ny) && ((ycenter+ry)<=nx) && ((zcenter+rz)<=nz)){
             float n;
 
             for (int k=(zcenter-rz); k<=(zcenter+rz); k++){
-                for (int i=(xcenter-rx); i<=(xcenter+rx); i++) {
-                    for (int j=(ycenter-ry); j<=(ycenter+ry); j++) {
+                for (int i=(ycenter-ry); i<=(ycenter+ry); i++) {
+                    for (int j=(xcenter-rx); j<=(xcenter+rx); j++) {
 
-                        n=((((i-xcenter)/(float)rx)*((i-xcenter)/(float)rx))+
-                           (((j-ycenter)/(float)ry)*((j-ycenter)/(float)ry))+
+                        n=((((i-ycenter)/(float)ry)*((i-ycenter)/(float)ry))+
+                           (((j-xcenter)/(float)rx)*((j-xcenter)/(float)rx))+
                            (((k-zcenter)/(float)rz)*((k-zcenter)/(float)rz)));
 
                         if (n<=1){
