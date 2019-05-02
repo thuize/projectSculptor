@@ -14,9 +14,10 @@ using namespace std;
 int main()
 {
     int kk=11,yy=21,xx=41;
-    Sculptor a(kk, xx, yy);
+    Sculptor a(kk, yy, xx);
     a.setColor(1,0,0,0);
-    a.putEllipsoid(10,21,5,10,20,5);
+    //a.putEllipsoid(10,21,5,10,20,5);
+    a.putEllipsoid(11,3,3,10,3,3);
     //a.putSphere(20,10,5,5);
     //a.cutEllipsoid(10,21,5,10,20,5);
     //a.cutEllipsoid(10,10,5,5,5,5);
@@ -24,7 +25,7 @@ int main()
     //a.cutBox(5,10,5,10,3,6);
     //a.putSphere(15,15,10,5);
     //a.writeVECT("teste.vect");
-    a.writeOFF("teste.off");
+    a.writeOFF("t3.off");
 
     return 0;
 }
