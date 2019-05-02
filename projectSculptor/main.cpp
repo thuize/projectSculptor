@@ -23,7 +23,8 @@ int main()
     //a.putBox(5,15,5,10,3,6);
     //a.cutBox(5,10,5,10,3,6);
     //a.putSphere(15,15,10,5);
-    a.writeVECT("a.vect");
+    //a.writeVECT("teste.vect");
+    a.writeOFF("teste.off");
 
     return 0;
 }

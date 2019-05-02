@@ -12,10 +12,10 @@
 #define SCULPTOR_H
 #include<iostream>
 #include<fstream>
-#include <fstream>
 #include<string>
 using std::string;
 using std::endl;
+using std::ofstream;
 
 /**
  * @struct Voxel
@@ -53,7 +53,7 @@ public:
     void cutSphere(int xcenter, int ycenter, int zcenter, int radius);
     void putEllipsoid(int xcenter, int ycenter, int zcenter, int rx, int ry, int rz);
     void cutEllipsoid(int xcenter, int ycenter, int zcenter, int rx, int ry, int rz);
-    //void writeOFF(string filename);
+    void writeOFF(string filename);
     void writeVECT(string filename);
 
 };
