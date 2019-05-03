@@ -16,7 +16,7 @@ using std::ofstream;
 /**
  * @details	Construtor da classe "sculptor".
  */
-Sculptor::Sculptor(int _nz, int _nx, int _ny){
+Sculptor::Sculptor(int _nz, int _ny, int _nx){
 
     if(_nz>0 && _nx>0 && _ny>0){
         nz=_nz; nx=_nx; ny=_ny;
@@ -52,6 +52,7 @@ Sculptor::Sculptor(int _nz, int _nx, int _ny){
                 }
             }
         }
+
     }else{
         std::cout<<"Tamanho Invalido. " << std::endl;
     }
@@ -107,10 +108,11 @@ void Sculptor::cutVoxel(int x, int y, int z){
  */
 void Sculptor::putBox(int x0, int x1, int y0, int y1, int z0, int z1)
 {
-    if ((x0>=0 && x1<=nx) && (y0>=0 && y1<=ny) && (z0>=0 && z1<=nz)){
-        for (int k=z0-1;k<z1;k++) {
-            for (int i=x0-1; i<x1 ; i++){
-                for (int j=y0-1; j<y1; j++) {
+
+    if ((x0>=0 && x1<=ny) && (y0>=0 && y1<=nx) && (z0>=0 && z1<=nz)){
+        for (int k=z0;k<z1;k++) {
+            for (int i=y0; i<y1 ; i++){
+                for (int j=x0; j<x1; j++) {
 
                     v[k][i][j].isOn  = true;
                     v[k][i][j].red   = r;
@@ -121,15 +123,6 @@ void Sculptor::putBox(int x0, int x1, int y0, int y1, int z0, int z1)
             }
 
         }
-        /*for (int k=0; k<nz; k++){
-            for (int i=0; i<nx; i++) {
-                for (int j=0; j<ny; j++) {
-                    std::cout<< v[k][i][j].red;
-                }
-                std::cout << std::endl;
-            }
-            std::cout << std::endl;
-        }*/
     }else{
         std::cout << " Tamanho Invalido! " << std::endl;
     }
@@ -141,10 +134,11 @@ void Sculptor::putBox(int x0, int x1, int y0, int y1, int z0, int z1)
  */
 void Sculptor::cutBox(int x0, int x1, int y0, int y1, int z0, int z1)
 {
-    if ((x0>=0 && x1<=nx) && (y0>=0 && y1<=ny) && (z0>=0 && z1<=nz)){
-        for (int k=z0-1;k<z1;k++){
-            for (int i=x0-1; i<x1 ; i++){
-                for (int j=y0-1; j<y1; j++){
+
+    if ((x0>=0 && x1<=ny) && (y0>=0 && y1<=nx) && (z0>=0 && z1<=nz)){
+        for (int k=z0;k<z1;k++) {
+            for (int i=y0; i<y1 ; i++){
+                for (int j=x0; j<x1; j++) {
                     v[k][i][j].isOn  = false;
                 }
             }
@@ -162,12 +156,11 @@ void Sculptor::putSphere(int xcenter, int ycenter, int zcenter, int radius)
 {
     float esfera;
 
-    if((zcenter>=radius) && (xcenter>=radius) && (ycenter>= radius)){
-        if(((xcenter+radius)<=nx) && ((ycenter+radius)<=ny) && ((zcenter+radius)<=nz)){
-            for (int k=zcenter-radius; k<zcenter+radius; k++) {
-                for (int i=ycenter-radius; i< ycenter+radius; i++) {
-                    for (int j=xcenter-radius; j<xcenter+radius; j++){
-
+    if((zcenter>radius) && (xcenter>radius) && (ycenter> radius)){
+        if(((xcenter+radius)<=ny) && ((ycenter+radius)<=nx) && ((zcenter+radius)<=nz)){
+            for (int k=(zcenter-radius); k<=(zcenter+radius); k++){
+                for (int i=(ycenter-radius); i<=(ycenter+radius); i++) {
+                    for (int j=(xcenter-radius); j<=(xcenter+radius); j++) {
                         esfera= (((i-ycenter)*(i-ycenter)) + ((j-xcenter)*(j-xcenter)) + ((k-zcenter)*(k-zcenter)));
 
                         if (esfera<= (radius*radius)){
@@ -180,17 +173,8 @@ void Sculptor::putSphere(int xcenter, int ycenter, int zcenter, int radius)
                     }
                 }
             }
-
-            /*for (int k=0; k<nz; k++){
-                for (int i=0; i<nx; i++) {
-                    for (int j=0; j<ny; j++) {
-                        std::cout<< v[k][i][j].red;
-                    }
-                    std::cout << std::endl;
-                }
-                std::cout << std::endl;
-            }*/
         }else{
+
             std::cout << "Raio muito grande!" << std::endl;
         }
     }
@@ -205,13 +189,13 @@ void Sculptor::putSphere(int xcenter, int ycenter, int zcenter, int radius)
 void Sculptor::cutSphere(int xcenter, int ycenter, int zcenter, int radius)
 {
     float esfera;
-    if((zcenter>=radius) && (xcenter>=radius) && (ycenter>= radius)){
-        if(((xcenter+radius)<=nx) && ((ycenter+radius)<=ny) && ((zcenter+radius)<=nz)){
-            for (int k=zcenter-radius; k<zcenter+radius; k++){
-                for (int i=ycenter- radius; i< ycenter+radius; i++) {
-                    for (int j=xcenter-radius; j<xcenter+radius; j++){
 
-                        esfera= (((i-xcenter)*(i-xcenter)) + ((j-ycenter)*(j-ycenter)) + ((k-zcenter)*(k-zcenter)));
+    if((zcenter>radius) && (xcenter>radius) && (ycenter> radius)){
+        if(((xcenter+radius)<=ny) && ((ycenter+radius)<=nx) && ((zcenter+radius)<=nz)){
+            for (int k=(zcenter-radius); k<=(zcenter+radius); k++){
+                for (int i=(ycenter-radius); i<=(ycenter+radius); i++) {
+                    for (int j=(xcenter-radius); j<=(xcenter+radius); j++) {
+                        esfera= (((i-ycenter)*(i-ycenter)) + ((j-xcenter)*(j-xcenter)) + ((k-zcenter)*(k-zcenter)));
 
                         if (esfera<= (radius*radius)){
                             v[k][i][j].isOn  = false;
@@ -220,29 +204,31 @@ void Sculptor::cutSphere(int xcenter, int ycenter, int zcenter, int radius)
                 }
             }
         }else{
+
             std::cout << "Raio muito grande!" << std::endl;
         }
-    }else{
+    }
+    else{
         std::cout << "Os centros devem ser maiores que o raio! " << std::endl;
     }
 }
-
 /**
  * @details	Método que desenha uma elipsóide. Ativa todos os voxels que satisfazem à equação da elipsóide,
  * atribuindo aos mesmos a cor atual do desenho
  */
 void Sculptor::putEllipsoid(int xcenter, int ycenter, int zcenter, int rx, int ry, int rz)
 {
+
     if((zcenter>=rz) && (xcenter>=rx) && (ycenter>= ry)){
         if(((xcenter+rx)<=ny) && ((ycenter+ry)<=nx) && ((zcenter+rz)<=nz)){
             float n;
 
             for (int k=(zcenter-rz); k<=(zcenter+rz); k++){
-                for (int i=(xcenter-rx); i<=(xcenter+rx); i++) {
-                    for (int j=(ycenter-ry); j<=(ycenter+ry); j++) {
+                for (int i=(ycenter-ry); i<=(ycenter+ry); i++) {
+                    for (int j=(xcenter-rx); j<=(xcenter+rx); j++) {
 
-                        n=((((i-xcenter)/(float)rx)*((i-xcenter)/(float)rx))+
-                           (((j-ycenter)/(float)ry)*((j-ycenter)/(float)ry))+
+                        n=((((i-ycenter)/(float)ry)*((i-ycenter)/(float)ry))+
+                           (((j-xcenter)/(float)rx)*((j-xcenter)/(float)rx))+
                            (((k-zcenter)/(float)rz)*((k-zcenter)/(float)rz)));
 
                         if (n<=1){
@@ -255,17 +241,8 @@ void Sculptor::putEllipsoid(int xcenter, int ycenter, int zcenter, int rx, int r
                     }
                 }
             }
-
-            for (int k=0; k<nz; k++){             // teste desenha matriz
-                for (int i=0; i<nx; i++) {
-                    for (int j=0; j<ny; j++) {
-                        std::cout<< v[k][i][j].red;
-                    }
-                    std::cout << std::endl;
-                }
-                std::cout << std::endl;
-            }
         }else{
+
             std::cout << "Raio muito grande!" << std::endl;
         }
     }else{
@@ -279,20 +256,19 @@ void Sculptor::putEllipsoid(int xcenter, int ycenter, int zcenter, int rx, int r
 void Sculptor::cutEllipsoid(int xcenter, int ycenter, int zcenter, int rx, int ry, int rz)
 {
     if((zcenter>=rz) && (xcenter>=rx) && (ycenter>= ry)){
-        if(((xcenter+rx)<=nx) && ((ycenter+ry)<=ny) && ((zcenter+rz)<=nz)){
+        if(((xcenter+rx)<=ny) && ((ycenter+ry)<=nx) && ((zcenter+rz)<=nz)){
             float n;
 
             for (int k=(zcenter-rz); k<=(zcenter+rz); k++){
-                for (int i=(xcenter-rx); i<=(xcenter+rx); i++){
-                    for (int j=(ycenter-ry); j<=(ycenter+ry); j++){
+                for (int i=(ycenter-ry); i<=(ycenter+ry); i++) {
+                    for (int j=(xcenter-rx); j<=(xcenter+rx); j++) {
 
-                        n=((((i-xcenter)/(float)rx)*((i-xcenter)/(float)rx))+
-                           (((j-ycenter)/(float)ry)*((j-ycenter)/(float)ry))+
+                        n=((((i-ycenter)/(float)ry)*((i-ycenter)/(float)ry))+
+                           (((j-xcenter)/(float)rx)*((j-xcenter)/(float)rx))+
                            (((k-zcenter)/(float)rz)*((k-zcenter)/(float)rz)));
 
                         if (n<=1){
                             v[k][i][j].isOn  = false;
-                            v[k][i][j].red = 0;
                         }
                     }
                 }
@@ -366,7 +342,7 @@ void Sculptor::writeVECT(string filename)
             for (int j = 0; j < ny; j++){
                 if (v[k][i][j].isOn){
                     outfile << v[k][i][j].red << " " << v[k][i][j].green << " " << v[k][i][j].blue
-                    << " " << v[k][i][j].transparency << "\n";
+                            << " " << v[k][i][j].transparency << "\n";
                 }
             }
         }
@@ -414,14 +390,14 @@ void Sculptor::writeOFF(string filename)
         for (int j = 0; j < nx; j++){
             for (int i = 0; i < ny; i++){
                 if (v[k][j][i].isOn){
-                  outfile << i-0.5 << " " << j+0.5 << " " << k-0.5 << "\n"
-                        << i-0.5 << " " << j-0.5 << " " << k-0.5 << "\n"
-                        << i+0.5 << " " << j-0.5 << " " << k-0.5 << "\n"
-                        << i+0.5 << " " << j+0.5 << " " << k-0.5 << "\n"
-                        << i-0.5 << " " << j+0.5 << " " << k+0.5 << "\n"
-                        << i-0.5 << " " << j-0.5 << " " << k+0.5 << "\n"
-                        << i+0.5 << " " << j-0.5 << " " << k+0.5 << "\n"
-                        << i+0.5 << " " << j+0.5 << " " << k+0.5 << "\n";
+                    outfile << i-0.5 << " " << j+0.5 << " " << k-0.5 << "\n"
+                            << i-0.5 << " " << j-0.5 << " " << k-0.5 << "\n"
+                            << i+0.5 << " " << j-0.5 << " " << k-0.5 << "\n"
+                            << i+0.5 << " " << j+0.5 << " " << k-0.5 << "\n"
+                            << i-0.5 << " " << j+0.5 << " " << k+0.5 << "\n"
+                            << i-0.5 << " " << j-0.5 << " " << k+0.5 << "\n"
+                            << i+0.5 << " " << j-0.5 << " " << k+0.5 << "\n"
+                            << i+0.5 << " " << j+0.5 << " " << k+0.5 << "\n";
                 }
             }
         }
@@ -433,11 +409,11 @@ void Sculptor::writeOFF(string filename)
                 if (v[k][i][j].isOn){
                     f = 8*f;
                     outfile << "4 " << f+0 << " " << f+3 << " " << f+2 << " " << f+1 << " " << v[k][i][j].red << " " << v[k][i][j].green << " " << v[k][i][j].blue << " " << v[k][i][j].transparency << "\n"
-                        << "4 " << f+4 << " " << f+5 << " " << f+6 << " " << f+7 << " " << v[k][i][j].red << " " << v[k][i][j].green << " " << v[k][i][j].blue << " " << v[k][i][j].transparency << "\n"
-                        << "4 " << f+0 << " " << f+1 << " " << f+5 << " " << f+4 << " " << v[k][i][j].red << " " << v[k][i][j].green << " " << v[k][i][j].blue << " " << v[k][i][j].transparency << "\n"
-                        << "4 " << f+0 << " " << f+4 << " " << f+7 << " " << f+3 << " " << v[k][i][j].red << " " << v[k][i][j].green << " " << v[k][i][j].blue << " " << v[k][i][j].transparency << "\n"
-                        << "4 " << f+3 << " " << f+7 << " " << f+6 << " " << f+2 << " " << v[k][i][j].red << " " << v[k][i][j].green << " " << v[k][i][j].blue << " " << v[k][i][j].transparency << "\n"
-                        << "4 " << f+1 << " " << f+2 << " " << f+6 << " " << f+5 << " " << v[k][i][j].red << " " << v[k][i][j].green << " " << v[k][i][j].blue << " " << v[k][i][j].transparency << "\n";
+                            << "4 " << f+4 << " " << f+5 << " " << f+6 << " " << f+7 << " " << v[k][i][j].red << " " << v[k][i][j].green << " " << v[k][i][j].blue << " " << v[k][i][j].transparency << "\n"
+                            << "4 " << f+0 << " " << f+1 << " " << f+5 << " " << f+4 << " " << v[k][i][j].red << " " << v[k][i][j].green << " " << v[k][i][j].blue << " " << v[k][i][j].transparency << "\n"
+                            << "4 " << f+0 << " " << f+4 << " " << f+7 << " " << f+3 << " " << v[k][i][j].red << " " << v[k][i][j].green << " " << v[k][i][j].blue << " " << v[k][i][j].transparency << "\n"
+                            << "4 " << f+3 << " " << f+7 << " " << f+6 << " " << f+2 << " " << v[k][i][j].red << " " << v[k][i][j].green << " " << v[k][i][j].blue << " " << v[k][i][j].transparency << "\n"
+                            << "4 " << f+1 << " " << f+2 << " " << f+6 << " " << f+5 << " " << v[k][i][j].red << " " << v[k][i][j].green << " " << v[k][i][j].blue << " " << v[k][i][j].transparency << "\n";
                     f = f/8+1;
                 }
             }
