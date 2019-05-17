@@ -88,11 +88,14 @@ void Sculptor::setColor(float _r, float _g, float _b, float _a){
  * @details	Ativa um voxel na posição (x,y,z) e atribui ao mesmo a cor atual do desenho.
  */
 void Sculptor::putVoxel(int x, int y, int z){    
-    v[x][y][z].isOn  = true;
-    v[x][y][z].red   = r;
-    v[x][y][z].green = g;
-    v[x][y][z].blue  = b;
-    v[x][y][z].transparency = a;
+    if (x>=0 && x<nx && y>=0 && y<ny && z>=0 && z<nz ){
+
+        v[x][y][z].isOn  = true;
+        v[x][y][z].red   = r;
+        v[x][y][z].green = g;
+        v[x][y][z].blue  = b;
+        v[x][y][z].transparency = a;
+    }
 }
 
 /**
@@ -106,47 +109,44 @@ void Sculptor::cutVoxel(int x, int y, int z){
  * @details	Método que desenha um cubo. Ativa todos os voxels pertencentes ao intervalo correspondente
  * aos parâmetros do método, atribuindo aos mesmos a cor atual do desenho.
  */
-void Sculptor::putBox(int x0, int x1, int y0, int y1, int z0, int z1)
+/*
+ void Sculptor::putBox(int x0, int x1, int y0, int y1, int z0, int z1)
 {
 
-    if ((x0>=0 && x1<=ny) && (y0>=0 && y1<=nx) && (z0>=0 && z1<=nz)){
-        for (int k=z0;k<z1;k++) {
-            for (int i=y0; i<y1 ; i++){
-                for (int j=x0; j<x1; j++) {
 
-                    v[k][i][j].isOn  = true;
-                    v[k][i][j].red   = r;
-                    v[k][i][j].green = g;
-                    v[k][i][j].blue  = b;
-                    v[k][i][j].transparency = a;
-                }
+    for (int k=z0;k<z1;k++) {
+        for (int i=y0; i<y1 ; i++){
+            for (int j=x0; j<x1; j++) {
+
+                v[k][i][j].isOn  = true;
+                v[k][i][j].red   = r;
+                v[k][i][j].green = g;
+                v[k][i][j].blue  = b;
+                v[k][i][j].transparency = a;
             }
-
         }
-    }else{
-        std::cout << " Tamanho Invalido! " << std::endl;
+
     }
+
 }
 
 /**
  * @details	Método que corta um cubo. Desativa todos os voxels pertencentes ao intervalo correspondente
  * aos parâmetros do método.
  */
-void Sculptor::cutBox(int x0, int x1, int y0, int y1, int z0, int z1)
+/*void Sculptor::cutBox(int x0, int x1, int y0, int y1, int z0, int z1)
 {
 
-    if ((x0>=0 && x1<=ny) && (y0>=0 && y1<=nx) && (z0>=0 && z1<=nz)){
-        for (int k=z0;k<z1;k++) {
-            for (int i=y0; i<y1 ; i++){
-                for (int j=x0; j<x1; j++) {
-                    v[k][i][j].isOn  = false;
-                }
+
+    for (int k=z0;k<z1;k++) {
+        for (int i=y0; i<y1 ; i++){
+            for (int j=x0; j<x1; j++) {
+                v[k][i][j].isOn  = false;
             }
         }
-    }else{
-        std::cout << " Tamanho Invalido! " << std::endl;
     }
-}
+
+}*/
 
 /**
  * @details	Método que desenha uma esfera. Ativa todos os voxels que satisfazem à equação da esfera,
@@ -156,32 +156,25 @@ void Sculptor::putSphere(int xcenter, int ycenter, int zcenter, int radius)
 {
     float esfera;
 
-    if((zcenter>radius) && (xcenter>radius) && (ycenter> radius)){
-        if(((xcenter+radius)<=ny) && ((ycenter+radius)<=nx) && ((zcenter+radius)<=nz)){
-            for (int k=(zcenter-radius); k<=(zcenter+radius); k++){
-                for (int i=(ycenter-radius); i<=(ycenter+radius); i++) {
-                    for (int j=(xcenter-radius); j<=(xcenter+radius); j++) {
-                        esfera= (((i-ycenter)*(i-ycenter)) + ((j-xcenter)*(j-xcenter)) + ((k-zcenter)*(k-zcenter)));
 
-                        if (esfera<= (radius*radius)){
-                            v[k][i][j].isOn  = true;
-                            v[k][i][j].red   = r;
-                            v[k][i][j].green = g;
-                            v[k][i][j].blue  = b;
-                            v[k][i][j].transparency = a;
-                        }
-                    }
+    for (int k=(zcenter-radius); k<=(zcenter+radius); k++){
+        for (int i=(ycenter-radius); i<=(ycenter+radius); i++) {
+            for (int j=(xcenter-radius); j<=(xcenter+radius); j++) {
+                esfera= (((i-ycenter)*(i-ycenter)) + ((j-xcenter)*(j-xcenter)) + ((k-zcenter)*(k-zcenter)));
+
+                if (esfera<= (radius*radius)){
+                    v[k][i][j].isOn  = true;
+                    v[k][i][j].red   = r;
+                    v[k][i][j].green = g;
+                    v[k][i][j].blue  = b;
+                    v[k][i][j].transparency = a;
                 }
             }
-        }else{
-
-            std::cout << "Raio muito grande!" << std::endl;
         }
     }
-    else{
-        std::cout << "Os centros devem ser maiores que o raio! " << std::endl;
-    }
+
 }
+
 
 /**
  * @details	Método que corta uma esfera. Desativa todos os voxels que satisfazem à equação da esfera
@@ -190,28 +183,22 @@ void Sculptor::cutSphere(int xcenter, int ycenter, int zcenter, int radius)
 {
     float esfera;
 
-    if((zcenter>radius) && (xcenter>radius) && (ycenter> radius)){
-        if(((xcenter+radius)<=ny) && ((ycenter+radius)<=nx) && ((zcenter+radius)<=nz)){
-            for (int k=(zcenter-radius); k<=(zcenter+radius); k++){
-                for (int i=(ycenter-radius); i<=(ycenter+radius); i++) {
-                    for (int j=(xcenter-radius); j<=(xcenter+radius); j++) {
-                        esfera= (((i-ycenter)*(i-ycenter)) + ((j-xcenter)*(j-xcenter)) + ((k-zcenter)*(k-zcenter)));
 
-                        if (esfera<= (radius*radius)){
-                            v[k][i][j].isOn  = false;
-                        }
-                    }
+    for (int k=(zcenter-radius); k<=(zcenter+radius); k++){
+        for (int i=(ycenter-radius); i<=(ycenter+radius); i++) {
+            for (int j=(xcenter-radius); j<=(xcenter+radius); j++) {
+                esfera= (((i-ycenter)*(i-ycenter)) + ((j-xcenter)*(j-xcenter)) + ((k-zcenter)*(k-zcenter)));
+
+                if (esfera<= (radius*radius)){
+                    v[k][i][j].isOn  = false;
                 }
             }
-        }else{
-
-            std::cout << "Raio muito grande!" << std::endl;
         }
     }
-    else{
-        std::cout << "Os centros devem ser maiores que o raio! " << std::endl;
-    }
+
 }
+
+
 /**
  * @details	Método que desenha uma elipsóide. Ativa todos os voxels que satisfazem à equação da elipsóide,
  * atribuindo aos mesmos a cor atual do desenho
@@ -219,35 +206,28 @@ void Sculptor::cutSphere(int xcenter, int ycenter, int zcenter, int radius)
 void Sculptor::putEllipsoid(int xcenter, int ycenter, int zcenter, int rx, int ry, int rz)
 {
 
-    if((zcenter>=rz) && (xcenter>=rx) && (ycenter>= ry)){
-        if(((xcenter+rx)<=ny) && ((ycenter+ry)<=nx) && ((zcenter+rz)<=nz)){
-            float n;
 
-            for (int k=(zcenter-rz); k<=(zcenter+rz); k++){
-                for (int i=(ycenter-ry); i<=(ycenter+ry); i++) {
-                    for (int j=(xcenter-rx); j<=(xcenter+rx); j++) {
+    float n;
 
-                        n=((((i-ycenter)/(float)ry)*((i-ycenter)/(float)ry))+
-                           (((j-xcenter)/(float)rx)*((j-xcenter)/(float)rx))+
-                           (((k-zcenter)/(float)rz)*((k-zcenter)/(float)rz)));
+    for (int k=(zcenter-rz); k<=(zcenter+rz); k++){
+        for (int i=(ycenter-ry); i<=(ycenter+ry); i++) {
+            for (int j=(xcenter-rx); j<=(xcenter+rx); j++) {
 
-                        if (n<=1){
-                            v[k][i][j].isOn  = true;
-                            v[k][i][j].red   = r;
-                            v[k][i][j].green = g;
-                            v[k][i][j].blue  = b;
-                            v[k][i][j].transparency = a;
-                        }
-                    }
+                n=((((i-ycenter)/(float)ry)*((i-ycenter)/(float)ry))+
+                   (((j-xcenter)/(float)rx)*((j-xcenter)/(float)rx))+
+                   (((k-zcenter)/(float)rz)*((k-zcenter)/(float)rz)));
+
+                if (n<=1){
+                    v[k][i][j].isOn  = true;
+                    v[k][i][j].red   = r;
+                    v[k][i][j].green = g;
+                    v[k][i][j].blue  = b;
+                    v[k][i][j].transparency = a;
                 }
             }
-        }else{
-
-            std::cout << "Raio muito grande!" << std::endl;
         }
-    }else{
-        std::cout << "Os centros devem ser maiores que o raio! " << std::endl;
     }
+
 }
 
 /**
@@ -255,30 +235,24 @@ void Sculptor::putEllipsoid(int xcenter, int ycenter, int zcenter, int rx, int r
  */
 void Sculptor::cutEllipsoid(int xcenter, int ycenter, int zcenter, int rx, int ry, int rz)
 {
-    if((zcenter>=rz) && (xcenter>=rx) && (ycenter>= ry)){
-        if(((xcenter+rx)<=ny) && ((ycenter+ry)<=nx) && ((zcenter+rz)<=nz)){
-            float n;
 
-            for (int k=(zcenter-rz); k<=(zcenter+rz); k++){
-                for (int i=(ycenter-ry); i<=(ycenter+ry); i++) {
-                    for (int j=(xcenter-rx); j<=(xcenter+rx); j++) {
+    float n;
 
-                        n=((((i-ycenter)/(float)ry)*((i-ycenter)/(float)ry))+
-                           (((j-xcenter)/(float)rx)*((j-xcenter)/(float)rx))+
-                           (((k-zcenter)/(float)rz)*((k-zcenter)/(float)rz)));
+    for (int k=(zcenter-rz); k<=(zcenter+rz); k++){
+        for (int i=(ycenter-ry); i<=(ycenter+ry); i++) {
+            for (int j=(xcenter-rx); j<=(xcenter+rx); j++) {
 
-                        if (n<=1){
-                            v[k][i][j].isOn  = false;
-                        }
-                    }
+                n=((((i-ycenter)/(float)ry)*((i-ycenter)/(float)ry))+
+                   (((j-xcenter)/(float)rx)*((j-xcenter)/(float)rx))+
+                   (((k-zcenter)/(float)rz)*((k-zcenter)/(float)rz)));
+
+                if (n<=1){
+                    v[k][i][j].isOn  = false;
                 }
             }
-        }else{
-            std::cout << "Raio muito grande!" << std::endl;
         }
-    }else{
-        std::cout << "Os centros devem ser maiores que o raio! " << std::endl;
     }
+
 }
 
 /**

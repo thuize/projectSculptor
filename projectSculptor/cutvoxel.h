@@ -1,6 +1,7 @@
 #ifndef CUTVOXEL_H
 #define CUTVOXEL_H
 #include "sculptor.h"
+#include "figurageometrica.h"
 
 class cutVoxel : public FiguraGeometrica
 {
