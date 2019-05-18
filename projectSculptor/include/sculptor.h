@@ -1,3 +1,6 @@
+#ifndef __SCULPTOR_H__
+#define __SCULPTOR_H__
+
 /**
  * @file  sculptor.h
  * @brief  Definição da classe Scultor e seus respectivos
@@ -8,14 +11,12 @@
  * @date   29/04/2019
  */
 
-#ifndef SCULPTOR_H
-#define SCULPTOR_H
-#include<iostream>
-#include<fstream>
-#include<string>
-using std::string;
+#include <iostream>
+#include <fstream>
+#include <string>
 using std::endl;
 using std::ofstream;
+using std::string;
 
 /**
  * @struct Voxel
@@ -23,10 +24,11 @@ using std::ofstream;
  * @details Um Voxel é definido como um struct e comporta as propriedades necessárias para permitir armazenar três tipos
  * de informações: a cor do voxel, sua transparência e se ele deverá ser incluído ou não no modelo digital que representa a escultura.
  */
-struct Voxel {
-  float red,green,blue; // Colors
-  float transparency; // Transparency
-  bool isOn; // Included or not
+struct Voxel
+{
+  float red, green, blue;
+  float transparency;
+  bool isOn;
 };
 
 /**
@@ -36,26 +38,27 @@ struct Voxel {
  * sculptor são utilizados para manipular os voxels da matriz, modificando cores, desenhando e apagando voxels, além da criação
  * de figuras geométricas como cubo, esfera e elipsóide, podendo ainda exportar os dados para arquivos VECT e OFF.
  */
-class Sculptor{
+class Sculptor
+{
 protected:
-    Voxel ***v; // 3D matrix
-    int nx,ny,nz; // Dimensions
-    float r,g,b,a; // Current drawing color
-public:
-    Sculptor(int _nx, int _ny, int _nz);
-    ~Sculptor();
-    void setColor(float _r, float _g, float _b, float _a);
-    void putVoxel(int x, int y, int z);
-    void cutVoxel(int x, int y, int z);
-    void putBox(int x0, int x1, int y0, int y1, int z0, int z1);
-    void cutBox(int x0, int x1, int y0, int y1, int z0, int z1);
-    void putSphere(int xcenter, int ycenter, int zcenter, int radius);
-    void cutSphere(int xcenter, int ycenter, int zcenter, int radius);
-    void putEllipsoid(int xcenter, int ycenter, int zcenter, int rx, int ry, int rz);
-    void cutEllipsoid(int xcenter, int ycenter, int zcenter, int rx, int ry, int rz);
-    void writeOFF(string filename);
-    void writeVECT(string filename);
+  Voxel ***v;
+  int nx, ny, nz;
+  float r, g, b, a;
 
+public:
+  Sculptor(int, int, int);
+  ~Sculptor();
+  void setColor(float, float, float, float);
+  void putVoxel(int, int, int);
+  void cutVoxel(int, int, int);
+  void putBox(int, int, int, int, int, int);
+  void cutBox(int, int, int, int, int, int);
+  void putSphere(int, int, int, int);
+  void cutSphere(int, int, int, int);
+  void putEllipsoid(int, int, int, int, int, int);
+  void cutEllipsoid(int, int, int, int, int, int);
+  void writeOFF(string);
+  void writeVECT(string);
 };
 
-#endif // SCULPTOR_H
+#endif

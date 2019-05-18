@@ -1,0 +1,13 @@
+<map id="include/sculptor.h" name="include/sculptor.h">
+<area shape="rect" id="node1" title="Definição da classe Scultor e seus respectivos métodos para desenhar figuras geométricas." alt="" coords="667,5,803,32"/>
+<area shape="rect" id="node2" href="$cutbox_8h.html" title="Classe cutBox." alt="" coords="5,155,135,181"/>
+<area shape="rect" id="node3" href="$figurageometrica_8h_source.html" title=" " alt="" coords="569,80,765,107"/>
+<area shape="rect" id="node4" href="$cutellipsoid_8h_source.html" title=" " alt="" coords="159,155,319,181"/>
+<area shape="rect" id="node5" href="$cutsphere_8h_source.html" title=" " alt="" coords="343,155,493,181"/>
+<area shape="rect" id="node6" href="$cutvoxel_8h.html" title="Classe cutVoxel." alt="" coords="517,155,658,181"/>
+<area shape="rect" id="node7" href="$putbox_8h_source.html" title=" " alt="" coords="682,155,813,181"/>
+<area shape="rect" id="node8" href="$putellipsoid_8h_source.html" title=" " alt="" coords="837,155,999,181"/>
+<area shape="rect" id="node9" href="$putsphere_8h_source.html" title=" " alt="" coords="1023,155,1173,181"/>
+<area shape="rect" id="node10" href="$putvoxel_8h_source.html" title=" " alt="" coords="1197,155,1340,181"/>
+<area shape="rect" id="node11" href="$sculptor_8cpp.html" title="Implementação do construtor, destrutor, métodos de manipulação dos voxels e escrita em arquivos ...." alt="" coords="993,80,1115,107"/>
+</map>
