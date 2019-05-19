@@ -186,8 +186,8 @@ void Sculptor::writeOFF(string filename)
     fout.open("./"+filename+".off");
     if(fout.is_open() == false)
     {
-        std::cout << "arquivo nao foi aberto\n";
-        exit(1);
+        std::cout << "Nao foi possivel abrir o arquivo! \n";
+        exit(0);
     }
 
     fout<<"OFF"<<endl;
@@ -203,41 +203,42 @@ void Sculptor::writeOFF(string filename)
         }
     }
     fout<<nvoxels*8<<" "<<nvoxels*6<<" 0"<<endl;
-    float vRadius=0.5f;
+    float R=0.5f;
     for(int i = 0; i<nz; i++){
         for(int j = 0; j<ny; j++){
             for(int k = 0; k<nx; k++){
                 if(v[i][j][k].isOn){
-                    fout<<(float)i-vRadius<<" "<<(float)j+vRadius<<" "<<(float)k-vRadius<<endl;
-                    fout<<(float)i-vRadius<<" "<<(float)j-vRadius<<" "<<(float)k-vRadius<<endl;
-                    fout<<(float)i+vRadius<<" "<<(float)j-vRadius<<" "<<(float)k-vRadius<<endl;
-                    fout<<(float)i+vRadius<<" "<<(float)j+vRadius<<" "<<(float)k-vRadius<<endl;
-                    fout<<(float)i-vRadius<<" "<<(float)j+vRadius<<" "<<(float)k+vRadius<<endl;
-                    fout<<(float)i-vRadius<<" "<<(float)j-vRadius<<" "<<(float)k+vRadius<<endl;
-                    fout<<(float)i+vRadius<<" "<<(float)j-vRadius<<" "<<(float)k+vRadius<<endl;
-                    fout<<(float)i+vRadius<<" "<<(float)j+vRadius<<" "<<(float)k+vRadius<<endl;
+
+                    fout<<(float)i-R<<" "<<(float)j+R<<" "<<(float)k-R<<endl;
+                    fout<<(float)i-R<<" "<<(float)j-R<<" "<<(float)k-R<<endl;
+                    fout<<(float)i+R<<" "<<(float)j-R<<" "<<(float)k-R<<endl;
+                    fout<<(float)i+R<<" "<<(float)j+R<<" "<<(float)k-R<<endl;
+                    fout<<(float)i-R<<" "<<(float)j+R<<" "<<(float)k+R<<endl;
+                    fout<<(float)i-R<<" "<<(float)j-R<<" "<<(float)k+R<<endl;
+                    fout<<(float)i+R<<" "<<(float)j-R<<" "<<(float)k+R<<endl;
+                    fout<<(float)i+R<<" "<<(float)j+R<<" "<<(float)k+R<<endl;
                 }
             }
         }
     }
 
 
-    //printing the order of connection of 4 vertices to define a face (there will be 6 faces for each voxel)
-    int vcn = 0; //vertex count for each activated vertex
+
+    int nv = 0;
     for(int i = 0; i<nz; i++){
         for(int j = 0; j<ny; j++){
             for(int k = 0; k<nx; k++){
                 if(v[i][j][k].isOn){
-                    //int vcn = vc*8; //vertex count multipled by 8, so that we jump 8 vertices in our printing every time we change voxel
 
-                    fout<<"4 "<<vcn+0<<" "<<vcn+3<<" "<<vcn+2<<" "<<vcn+1<<" "<<v[i][j][k].red<<" "<<v[i][j][k].green<<" "<<v[i][j][k].blue<<" "<<v[i][j][k].transparency<<endl;
-                    fout<<"4 "<<vcn+4<<" "<<vcn+5<<" "<<vcn+6<<" "<<vcn+7<<" "<<v[i][j][k].red<<" "<<v[i][j][k].green<<" "<<v[i][j][k].blue<<" "<<v[i][j][k].transparency<<endl;
-                    fout<<"4 "<<vcn+0<<" "<<vcn+1<<" "<<vcn+5<<" "<<vcn+4<<" "<<v[i][j][k].red<<" "<<v[i][j][k].green<<" "<<v[i][j][k].blue<<" "<<v[i][j][k].transparency<<endl;
-                    fout<<"4 "<<vcn+0<<" "<<vcn+4<<" "<<vcn+7<<" "<<vcn+3<<" "<<v[i][j][k].red<<" "<<v[i][j][k].green<<" "<<v[i][j][k].blue<<" "<<v[i][j][k].transparency<<endl;
-                    fout<<"4 "<<vcn+3<<" "<<vcn+7<<" "<<vcn+6<<" "<<vcn+2<<" "<<v[i][j][k].red<<" "<<v[i][j][k].green<<" "<<v[i][j][k].blue<<" "<<v[i][j][k].transparency<<endl;
-                    fout<<"4 "<<vcn+1<<" "<<vcn+2<<" "<<vcn+6<<" "<<vcn+5<<" "<<v[i][j][k].red<<" "<<v[i][j][k].green<<" "<<v[i][j][k].blue<<" "<<v[i][j][k].transparency<<endl;
 
-                    vcn = vcn+8;
+                    fout<<"4 "<<nv+0<<" "<<nv+3<<" "<<nv+2<<" "<<nv+1<<" "<<v[i][j][k].red<<" "<<v[i][j][k].green<<" "<<v[i][j][k].blue<<" "<<v[i][j][k].transparency<<endl;
+                    fout<<"4 "<<nv+4<<" "<<nv+5<<" "<<nv+6<<" "<<nv+7<<" "<<v[i][j][k].red<<" "<<v[i][j][k].green<<" "<<v[i][j][k].blue<<" "<<v[i][j][k].transparency<<endl;
+                    fout<<"4 "<<nv+0<<" "<<nv+1<<" "<<nv+5<<" "<<nv+4<<" "<<v[i][j][k].red<<" "<<v[i][j][k].green<<" "<<v[i][j][k].blue<<" "<<v[i][j][k].transparency<<endl;
+                    fout<<"4 "<<nv+0<<" "<<nv+4<<" "<<nv+7<<" "<<nv+3<<" "<<v[i][j][k].red<<" "<<v[i][j][k].green<<" "<<v[i][j][k].blue<<" "<<v[i][j][k].transparency<<endl;
+                    fout<<"4 "<<nv+3<<" "<<nv+7<<" "<<nv+6<<" "<<nv+2<<" "<<v[i][j][k].red<<" "<<v[i][j][k].green<<" "<<v[i][j][k].blue<<" "<<v[i][j][k].transparency<<endl;
+                    fout<<"4 "<<nv+1<<" "<<nv+2<<" "<<nv+6<<" "<<nv+5<<" "<<v[i][j][k].red<<" "<<v[i][j][k].green<<" "<<v[i][j][k].blue<<" "<<v[i][j][k].transparency<<endl;
+
+                    nv = nv+8;
                 }
             }
         }
