@@ -1,0 +1,11 @@
+<map id="Gráfico de Hierarquia de Classes" name="Gráfico de Hierarquia de Classes">
+<area shape="rect" id="node1" href="$classFiguraGeometrica.html" title="Class FiguraGeometrica." alt="" coords="5,183,143,209"/>
+<area shape="rect" id="node2" href="$classcutBox.html" title="Class cutBox." alt="" coords="207,5,273,32"/>
+<area shape="rect" id="node3" href="$classcutEllipsoid.html" title="Class cutEllipsoid." alt="" coords="191,56,289,83"/>
+<area shape="rect" id="node4" href="$classcutSphere.html" title="Class cutSphere." alt="" coords="197,107,283,133"/>
+<area shape="rect" id="node5" href="$classcutVoxel.html" title="Class cutVoxel." alt="" coords="201,157,279,184"/>
+<area shape="rect" id="node6" href="$classputBox.html" title="Class putBox." alt="" coords="206,208,274,235"/>
+<area shape="rect" id="node7" href="$classputEllipsoid.html" title="Class putEllipsoid." alt="" coords="191,259,289,285"/>
+<area shape="rect" id="node8" href="$classputSphere.html" title="Class putSphere." alt="" coords="196,309,284,336"/>
+<area shape="rect" id="node9" href="$classputVoxel.html" title="Class putVoxel." alt="" coords="201,360,279,387"/>
+</map>

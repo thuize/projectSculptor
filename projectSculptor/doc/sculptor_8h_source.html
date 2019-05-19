@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.15"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>projectSculptor: Código-Fonte de sculptor.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">projectSculptor
+   </div>
+   <div id="projectbrief">Escultor Inteligente</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Gerado por Doxygen 1.8.15 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Busca');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Busca');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">sculptor.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="sculptor_8h.html">Vá para a documentação desse arquivo.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div><div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#ifndef SCULPTOR_H</span></div><div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#define SCULPTOR_H</span></div><div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;</div><div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#include&lt;iostream&gt;</span></div><div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include&lt;fstream&gt;</span></div><div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include&lt;string&gt;</span></div><div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#include &lt;cstdlib&gt;</span></div><div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#include &lt;sstream&gt;</span></div><div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="keyword">using</span> std::string;</div><div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="keyword">using</span> std::endl;</div><div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="keyword">using</span> std::ofstream;</div><div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="keyword">using</span> std::ifstream;</div><div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="structVoxel.html">   38</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structVoxel.html">Voxel</a> {</div><div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;  <span class="keywordtype">float</span> red,green,blue;</div><div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;  <span class="keywordtype">float</span> transparency;</div><div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;  <span class="keywordtype">bool</span> isOn;</div><div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;};</div><div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div><div class="line"><a name="l00051"></a><span class="lineno"><a class="line" href="classSculptor.html">   51</a></span>&#160;<span class="keyword">class </span><a class="code" href="classSculptor.html">Sculptor</a>{</div><div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="keyword">protected</span>:</div><div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <a class="code" href="structVoxel.html">Voxel</a> ***v;</div><div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="keywordtype">int</span> nx,ny,nz;</div><div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="keywordtype">float</span> r,g,b,a;</div><div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="keyword">public</span>:</div><div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <a class="code" href="classSculptor.html#ab03ab031a9cf17099569fbca9758fa0f">Sculptor</a>(<span class="keywordtype">int</span> _nz, <span class="keywordtype">int</span> _ny, <span class="keywordtype">int</span> _nx);</div><div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <a class="code" href="classSculptor.html#a8f159bf97458326f16d2e238e11be7ff">~Sculptor</a>();</div><div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classSculptor.html#a5723e671e073ac310b6f385a7fdc9f9f">setColor</a>(<span class="keywordtype">float</span> _r, <span class="keywordtype">float</span> _g, <span class="keywordtype">float</span> _b, <span class="keywordtype">float</span> _a);</div><div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classSculptor.html#a4bdea3048b419d58e93074060eaa7b52">putVoxel</a>(<span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y, <span class="keywordtype">int</span> z);</div><div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classSculptor.html#ad9d714a35fc8ae16d06eb5df37c3493c">cutVoxel</a>(<span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y, <span class="keywordtype">int</span> z);</div><div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classSculptor.html#a4faae5ab2d72f2f682005f468e7e8a92">writeOFF</a>(<span class="keywordtype">string</span> filename);</div><div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classSculptor.html#a200442de17ed45b7a1ece728145a2ddf">writeVECT</a>(<span class="keywordtype">string</span> filename);</div><div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;</div><div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;</div><div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;};</div><div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;</div><div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="preprocessor">#endif // SCULPTOR_H</span></div><div class="ttc" id="classSculptor_html_ad9d714a35fc8ae16d06eb5df37c3493c"><div class="ttname"><a href="classSculptor.html#ad9d714a35fc8ae16d06eb5df37c3493c">Sculptor::cutVoxel</a></div><div class="ttdeci">void cutVoxel(int x, int y, int z)</div><div class="ttdef"><b>Definition:</b> sculptor.cpp:103</div></div>
+<div class="ttc" id="classSculptor_html"><div class="ttname"><a href="classSculptor.html">Sculptor</a></div><div class="ttdoc">Classe que representa um escultor digital.</div><div class="ttdef"><b>Definition:</b> sculptor.h:51</div></div>
+<div class="ttc" id="classSculptor_html_a4bdea3048b419d58e93074060eaa7b52"><div class="ttname"><a href="classSculptor.html#a4bdea3048b419d58e93074060eaa7b52">Sculptor::putVoxel</a></div><div class="ttdeci">void putVoxel(int x, int y, int z)</div><div class="ttdef"><b>Definition:</b> sculptor.cpp:89</div></div>
+<div class="ttc" id="structVoxel_html"><div class="ttname"><a href="structVoxel.html">Voxel</a></div><div class="ttdoc">Struct que representa um Voxel.</div><div class="ttdef"><b>Definition:</b> sculptor.h:38</div></div>
+<div class="ttc" id="classSculptor_html_a200442de17ed45b7a1ece728145a2ddf"><div class="ttname"><a href="classSculptor.html#a200442de17ed45b7a1ece728145a2ddf">Sculptor::writeVECT</a></div><div class="ttdeci">void writeVECT(string filename)</div><div class="ttdef"><b>Definition:</b> sculptor.cpp:110</div></div>
+<div class="ttc" id="classSculptor_html_a4faae5ab2d72f2f682005f468e7e8a92"><div class="ttname"><a href="classSculptor.html#a4faae5ab2d72f2f682005f468e7e8a92">Sculptor::writeOFF</a></div><div class="ttdeci">void writeOFF(string filename)</div><div class="ttdef"><b>Definition:</b> sculptor.cpp:181</div></div>
+<div class="ttc" id="classSculptor_html_ab03ab031a9cf17099569fbca9758fa0f"><div class="ttname"><a href="classSculptor.html#ab03ab031a9cf17099569fbca9758fa0f">Sculptor::Sculptor</a></div><div class="ttdeci">Sculptor(int _nz, int _ny, int _nx)</div><div class="ttdef"><b>Definition:</b> sculptor.cpp:18</div></div>
+<div class="ttc" id="classSculptor_html_a8f159bf97458326f16d2e238e11be7ff"><div class="ttname"><a href="classSculptor.html#a8f159bf97458326f16d2e238e11be7ff">Sculptor::~Sculptor</a></div><div class="ttdeci">~Sculptor()</div><div class="ttdef"><b>Definition:</b> sculptor.cpp:63</div></div>
+<div class="ttc" id="classSculptor_html_a5723e671e073ac310b6f385a7fdc9f9f"><div class="ttname"><a href="classSculptor.html#a5723e671e073ac310b6f385a7fdc9f9f">Sculptor::setColor</a></div><div class="ttdeci">void setColor(float _r, float _g, float _b, float _a)</div><div class="ttdef"><b>Definition:</b> sculptor.cpp:72</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Gerado por &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.15
+</small></address>
+</body>
+</html>

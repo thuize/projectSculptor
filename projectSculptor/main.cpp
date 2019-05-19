@@ -6,7 +6,6 @@
  * @since	15/04/2019
  * @date	01/05/2019
  */
-
 #include "sculptor.h"
 #include "figurageometrica.h"
 #include <vector>
@@ -20,7 +19,13 @@
 #include "cutellipsoid.h"
 
 using namespace std;
-
+/**
+ * @brief main
+ * @return Arquivo OFF
+ * @details No arquivo main é realizada a leitura do arquivo contendo as especificações do desenho a ser criado,
+ * além de, após executadas as devidas operações, é retonado o arquivo OFF que permite visualizar o desenho por meio
+ * de um software externo de visualização 3D.
+ */
 int main()
 {  
     Sculptor *array;

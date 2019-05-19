@@ -1,0 +1,18 @@
+<map id="figurageometrica.h" name="figurageometrica.h">
+<area shape="rect" id="node1" title="Classe FiguraGeometrica." alt="" coords="445,5,591,32"/>
+<area shape="rect" id="node2" href="$cutbox_8h.html" title="Classe cutBox." alt="" coords="424,80,503,107"/>
+<area shape="rect" id="node3" href="$main_8cpp.html" title="Demonstração da implementação do escultor digital." alt="" coords="397,155,479,181"/>
+<area shape="rect" id="node4" href="$cutellipsoid_8h.html" title="Classe cutEllipsoid." alt="" coords="135,80,245,107"/>
+<area shape="rect" id="node5" href="$cutsphere_8h.html" title="Classe cutSphere." alt="" coords="13,80,111,107"/>
+<area shape="rect" id="node7" href="$cutvoxel_8h.html" title="Classe cutVoxel." alt="" coords="527,80,618,107"/>
+<area shape="rect" id="node9" href="$figurageometrica_8cpp.html" title="Definição dos métodos da classe abstrata FiguraGeometrica." alt="" coords="1015,80,1175,107"/>
+<area shape="rect" id="node10" href="$putbox_8h.html" title="Classe putBox." alt="" coords="269,80,348,107"/>
+<area shape="rect" id="node11" href="$putvoxel_8h.html" title="Classe putVoxel." alt="" coords="642,80,733,107"/>
+<area shape="rect" id="node13" href="$putsphere_8h.html" title="Classe putSphere." alt="" coords="757,80,855,107"/>
+<area shape="rect" id="node15" href="$putellipsoid_8h.html" title="Classe putEllipsoid." alt="" coords="880,80,991,107"/>
+<area shape="rect" id="node6" href="$cutsphere_8cpp.html" title="Definição dos métods da classe cutSphere." alt="" coords="5,155,119,181"/>
+<area shape="rect" id="node8" href="$cutvoxel_8cpp.html" title="Definição dos métods da classe cutVoxel." alt="" coords="504,155,609,181"/>
+<area shape="rect" id="node12" href="$putvoxel_8cpp.html" title="Definição dos métods da classe putVoxel." alt="" coords="634,155,741,181"/>
+<area shape="rect" id="node14" href="$putsphere_8cpp.html" title="Definição dos métodos da classe putSphere." alt="" coords="765,155,879,181"/>
+<area shape="rect" id="node16" href="$putellipsoid_8cpp.html" title="Definição dos métodos da classe putEllipsoid." alt="" coords="903,155,1029,181"/>
+</map>

@@ -10,6 +10,16 @@
 
 #ifndef SCULPTOR_H
 #define SCULPTOR_H
+
+/**
+ *	@file		sculptor.h
+ *	@brief		Classe Sculptor
+ *	@author		Thuize Thainá
+ *  @author     Felipe Lima
+ *	@date		18/05/2019
+ *	@since		18/05/2019
+ */
+
 #include<iostream>
 #include<fstream>
 #include<string>

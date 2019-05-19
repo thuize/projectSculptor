@@ -1,0 +1,20 @@
+<map id="sculptor.h" name="sculptor.h">
+<area shape="rect" id="node1" title="Definição da classe Scultor e seus respectivos métodos para desenhar figuras geométricas." alt="" coords="678,5,763,32"/>
+<area shape="rect" id="node2" href="$figurageometrica_8h.html" title="Classe FiguraGeometrica." alt="" coords="593,80,739,107"/>
+<area shape="rect" id="node4" href="$main_8cpp.html" title="Demonstração da implementação do escultor digital." alt="" coords="625,229,707,256"/>
+<area shape="rect" id="node8" href="$cutvoxel_8h.html" title="Classe cutVoxel." alt="" coords="1134,155,1225,181"/>
+<area shape="rect" id="node18" href="$sculptor_8cpp.html" title="Implementação do construtor, destrutor, métodos de manipulação dos voxels e escrita em arquivos ...." alt="" coords="815,80,915,107"/>
+<area shape="rect" id="node3" href="$cutbox_8h.html" title="Classe cutBox." alt="" coords="588,155,667,181"/>
+<area shape="rect" id="node5" href="$cutellipsoid_8h.html" title="Classe cutEllipsoid." alt="" coords="742,155,851,181"/>
+<area shape="rect" id="node6" href="$cutsphere_8h.html" title="Classe cutSphere." alt="" coords="13,155,111,181"/>
+<area shape="rect" id="node10" href="$figurageometrica_8cpp.html" title="Definição dos métodos da classe abstrata FiguraGeometrica." alt="" coords="301,155,461,181"/>
+<area shape="rect" id="node11" href="$putbox_8h.html" title="Classe putBox." alt="" coords="485,155,564,181"/>
+<area shape="rect" id="node12" href="$putvoxel_8h.html" title="Classe putVoxel." alt="" coords="186,155,277,181"/>
+<area shape="rect" id="node14" href="$putsphere_8h.html" title="Classe putSphere." alt="" coords="875,155,974,181"/>
+<area shape="rect" id="node16" href="$putellipsoid_8h.html" title="Classe putEllipsoid." alt="" coords="999,155,1109,181"/>
+<area shape="rect" id="node7" href="$cutsphere_8cpp.html" title="Definição dos métods da classe cutSphere." alt="" coords="5,229,119,256"/>
+<area shape="rect" id="node9" href="$cutvoxel_8cpp.html" title="Definição dos métods da classe cutVoxel." alt="" coords="1141,229,1247,256"/>
+<area shape="rect" id="node13" href="$putvoxel_8cpp.html" title="Definição dos métods da classe putVoxel." alt="" coords="178,229,285,256"/>
+<area shape="rect" id="node15" href="$putsphere_8cpp.html" title="Definição dos métodos da classe putSphere." alt="" coords="853,229,967,256"/>
+<area shape="rect" id="node17" href="$putellipsoid_8cpp.html" title="Definição dos métodos da classe putEllipsoid." alt="" coords="991,229,1117,256"/>
+</map>

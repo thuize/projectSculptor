@@ -1,0 +1,83 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.15"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>projectSculptor: Código-Fonte de cutellipsoid.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">projectSculptor
+   </div>
+   <div id="projectbrief">Escultor Inteligente</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Gerado por Doxygen 1.8.15 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Busca');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Busca');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">cutellipsoid.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="cutellipsoid_8h.html">Vá para a documentação desse arquivo.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef CUTELLIPSOID_H</span></div><div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define CUTELLIPSOID_H</span></div><div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;</div><div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="figurageometrica_8h.html">figurageometrica.h</a>&quot;</span></div><div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;</div><div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="classcutEllipsoid.html">   21</a></span>&#160;<span class="keyword">class </span><a class="code" href="classcutEllipsoid.html">cutEllipsoid</a> : <span class="keyword">public</span> <a class="code" href="classFiguraGeometrica.html">FiguraGeometrica</a></div><div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;{</div><div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="keywordtype">int</span> xcenter, ycenter, zcenter, rx, ry, rz;</div><div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="keyword">public</span>:</div><div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <a class="code" href="classcutEllipsoid.html#a27fb120d867b3d474fe5f93c4fdced76">cutEllipsoid</a>(<span class="keywordtype">int</span> _xcenter, <span class="keywordtype">int</span> _ycenter, <span class="keywordtype">int</span> _zcenter, <span class="keywordtype">int</span> _rx, <span class="keywordtype">int</span> _ry, <span class="keywordtype">int</span> _rz);</div><div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classcutEllipsoid.html#aea9654e11c549e9108a75692385a1865">draw</a>(<a class="code" href="classSculptor.html">Sculptor</a> &amp;s);</div><div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;};</div><div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div><div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="preprocessor">#endif // CUTELLIPSOID_H</span></div><div class="ttc" id="classcutEllipsoid_html"><div class="ttname"><a href="classcutEllipsoid.html">cutEllipsoid</a></div><div class="ttdoc">Class cutEllipsoid.</div><div class="ttdef"><b>Definition:</b> cutellipsoid.h:21</div></div>
+<div class="ttc" id="classSculptor_html"><div class="ttname"><a href="classSculptor.html">Sculptor</a></div><div class="ttdoc">Classe que representa um escultor digital.</div><div class="ttdef"><b>Definition:</b> sculptor.h:51</div></div>
+<div class="ttc" id="figurageometrica_8h_html"><div class="ttname"><a href="figurageometrica_8h.html">figurageometrica.h</a></div><div class="ttdoc">Classe FiguraGeometrica.</div></div>
+<div class="ttc" id="classcutEllipsoid_html_a27fb120d867b3d474fe5f93c4fdced76"><div class="ttname"><a href="classcutEllipsoid.html#a27fb120d867b3d474fe5f93c4fdced76">cutEllipsoid::cutEllipsoid</a></div><div class="ttdeci">cutEllipsoid(int _xcenter, int _ycenter, int _zcenter, int _rx, int _ry, int _rz)</div><div class="ttdoc">cutEllipsoid</div><div class="ttdef"><b>Definition:</b> cutellipsoid.cpp:20</div></div>
+<div class="ttc" id="classcutEllipsoid_html_aea9654e11c549e9108a75692385a1865"><div class="ttname"><a href="classcutEllipsoid.html#aea9654e11c549e9108a75692385a1865">cutEllipsoid::draw</a></div><div class="ttdeci">void draw(Sculptor &amp;s)</div><div class="ttdoc">draw</div><div class="ttdef"><b>Definition:</b> cutellipsoid.cpp:35</div></div>
+<div class="ttc" id="classFiguraGeometrica_html"><div class="ttname"><a href="classFiguraGeometrica.html">FiguraGeometrica</a></div><div class="ttdoc">Class FiguraGeometrica.</div><div class="ttdef"><b>Definition:</b> figurageometrica.h:21</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Gerado por &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.15
+</small></address>
+</body>
+</html>
