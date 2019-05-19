@@ -6,10 +6,10 @@
 
 class putVoxel : public FiguraGeometrica
 {
-    int nx, ny, nz;
-    float nr,ng,nb,na;
+    int x, y, z;
+    float r,g,b,a;
 public:
-    putVoxel(int mx, int my, int mz, float r, float g, float b, float a);
+    putVoxel(int _x, int _y, int _z, float _r, float _g, float _b, float _a);
     void draw(Sculptor &s);
 };
 

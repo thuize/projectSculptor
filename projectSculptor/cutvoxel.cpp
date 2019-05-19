@@ -1,8 +1,10 @@
 #include "cutvoxel.h"
 
 
-cutVoxel::cutVoxel(int mx, int my, int mz){
-    x=mx; y=my; z=mz;
+cutVoxel::cutVoxel(int _x, int _y, int _z){
+    x = _x;
+    y = _y;
+    z = _z;
 }
 
 void cutVoxel::draw(Sculptor &s){

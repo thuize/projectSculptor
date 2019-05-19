@@ -1,12 +1,16 @@
 #include "putvoxel.h"
 
-putVoxel::putVoxel(int mx, int my, int mz,
+putVoxel::putVoxel(int _x, int _y, int _z,
                    float _r, float _g, float _b, float _a){
-    nx=mx; ny=my; nz=mz;
-    nr=_r; ng=_g; nb=_b; na=_a;
+    x = _x;
+    y = _y;
+    z = _z;
+    r = _r;
+    g = _g;
+    a = _a;
 }
 
 void putVoxel::draw(Sculptor &s){
-    s.putVoxel(nx,ny,nz);
-    s.setColor(nr,ng,nb,na);
+    s.putVoxel(x,y,z);
+    s.setColor(r,g,b,a);
 }

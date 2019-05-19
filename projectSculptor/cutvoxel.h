@@ -7,7 +7,7 @@ class cutVoxel : public FiguraGeometrica
 {
     int x, y, z;
 public:
-    cutVoxel(int mx, int my, int mz);
+    cutVoxel(int _x, int _y, int _z);
     void draw(Sculptor &s);
 };
 

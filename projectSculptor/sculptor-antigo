@@ -106,6 +106,156 @@ void Sculptor::cutVoxel(int x, int y, int z){
 }
 
 /**
+ * @details	Método que desenha um cubo. Ativa todos os voxels pertencentes ao intervalo correspondente
+ * aos parâmetros do método, atribuindo aos mesmos a cor atual do desenho.
+ */
+/*
+ void Sculptor::putBox(int x0, int x1, int y0, int y1, int z0, int z1)
+{
+
+
+    for (int k=z0;k<z1;k++) {
+        for (int i=y0; i<y1 ; i++){
+            for (int j=x0; j<x1; j++) {
+
+                v[k][i][j].isOn  = true;
+                v[k][i][j].red   = r;
+                v[k][i][j].green = g;
+                v[k][i][j].blue  = b;
+                v[k][i][j].transparency = a;
+            }
+        }
+
+    }
+
+}
+
+/**
+ * @details	Método que corta um cubo. Desativa todos os voxels pertencentes ao intervalo correspondente
+ * aos parâmetros do método.
+ */
+/*void Sculptor::cutBox(int x0, int x1, int y0, int y1, int z0, int z1)
+{
+
+
+    for (int k=z0;k<z1;k++) {
+        for (int i=y0; i<y1 ; i++){
+            for (int j=x0; j<x1; j++) {
+                v[k][i][j].isOn  = false;
+            }
+        }
+    }
+
+}*/
+
+/**
+ * @details	Método que desenha uma esfera. Ativa todos os voxels que satisfazem à equação da esfera,
+ * atribuindo aos mesmos a cor atual do desenho
+ */
+void Sculptor::putSphere(int xcenter, int ycenter, int zcenter, int radius)
+{
+    float esfera;
+
+
+    for (int k=(zcenter-radius); k<=(zcenter+radius); k++){
+        for (int i=(ycenter-radius); i<=(ycenter+radius); i++) {
+            for (int j=(xcenter-radius); j<=(xcenter+radius); j++) {
+                esfera= (((i-ycenter)*(i-ycenter)) + ((j-xcenter)*(j-xcenter)) + ((k-zcenter)*(k-zcenter)));
+
+                if (esfera<= (radius*radius)){
+                    v[k][i][j].isOn  = true;
+                    v[k][i][j].red   = r;
+                    v[k][i][j].green = g;
+                    v[k][i][j].blue  = b;
+                    v[k][i][j].transparency = a;
+                }
+            }
+        }
+    }
+
+}
+
+
+/**
+ * @details	Método que corta uma esfera. Desativa todos os voxels que satisfazem à equação da esfera
+ */
+void Sculptor::cutSphere(int xcenter, int ycenter, int zcenter, int radius)
+{
+    float esfera;
+
+
+    for (int k=(zcenter-radius); k<=(zcenter+radius); k++){
+        for (int i=(ycenter-radius); i<=(ycenter+radius); i++) {
+            for (int j=(xcenter-radius); j<=(xcenter+radius); j++) {
+                esfera= (((i-ycenter)*(i-ycenter)) + ((j-xcenter)*(j-xcenter)) + ((k-zcenter)*(k-zcenter)));
+
+                if (esfera<= (radius*radius)){
+                    v[k][i][j].isOn  = false;
+                }
+            }
+        }
+    }
+
+}
+
+
+/**
+ * @details	Método que desenha uma elipsóide. Ativa todos os voxels que satisfazem à equação da elipsóide,
+ * atribuindo aos mesmos a cor atual do desenho
+ */
+void Sculptor::putEllipsoid(int xcenter, int ycenter, int zcenter, int rx, int ry, int rz)
+{
+
+
+    float n;
+
+    for (int k=(zcenter-rz); k<=(zcenter+rz); k++){
+        for (int i=(ycenter-ry); i<=(ycenter+ry); i++) {
+            for (int j=(xcenter-rx); j<=(xcenter+rx); j++) {
+
+                n=((((i-ycenter)/(float)ry)*((i-ycenter)/(float)ry))+
+                   (((j-xcenter)/(float)rx)*((j-xcenter)/(float)rx))+
+                   (((k-zcenter)/(float)rz)*((k-zcenter)/(float)rz)));
+
+                if (n<=1){
+                    v[k][i][j].isOn  = true;
+                    v[k][i][j].red   = r;
+                    v[k][i][j].green = g;
+                    v[k][i][j].blue  = b;
+                    v[k][i][j].transparency = a;
+                }
+            }
+        }
+    }
+
+}
+
+/**
+ * @details	Método que corta uma elipsóide. Desativa todos os voxels que satisfazem à equação da elipsóide
+ */
+void Sculptor::cutEllipsoid(int xcenter, int ycenter, int zcenter, int rx, int ry, int rz)
+{
+
+    float n;
+
+    for (int k=(zcenter-rz); k<=(zcenter+rz); k++){
+        for (int i=(ycenter-ry); i<=(ycenter+ry); i++) {
+            for (int j=(xcenter-rx); j<=(xcenter+rx); j++) {
+
+                n=((((i-ycenter)/(float)ry)*((i-ycenter)/(float)ry))+
+                   (((j-xcenter)/(float)rx)*((j-xcenter)/(float)rx))+
+                   (((k-zcenter)/(float)rz)*((k-zcenter)/(float)rz)));
+
+                if (n<=1){
+                    v[k][i][j].isOn  = false;
+                }
+            }
+        }
+    }
+
+}
+
+/**
  * @details	Método que grava a escultura em um arquivo VECT para permetir a visualização do desenho
  */
 void Sculptor::writeVECT(string filename)
@@ -247,3 +397,4 @@ void Sculptor::writeOFF(string filename)
     outfile.close();
     std::cout << "Arquivo OFF criado\n";
 }
+ 
