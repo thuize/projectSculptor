@@ -70,28 +70,31 @@ int main()
             int   xbox,ybox,zbox,x1box,y1box,z1box;
             float rbox,gbox,bbox,abox;
 
-            ss >>xbox >> x1box >> ybox >> y1box >> zbox >> z1box >> rbox >> gbox >> bbox >> abox;
+            ss >> xbox >> x1box >> ybox >> y1box >> zbox >> z1box >> rbox >> gbox >> bbox >> abox;
             fig.push_back(new putBox(xbox,x1box,ybox,y1box,zbox,z1box,rbox,gbox,bbox,abox));
         }
 
-        else if(s.compare("cutbox")){
+        else if(s.compare("cutbox")==0){
+            int   cxbox,cybox,czbox,cx1box,cy1box,cz1box;
 
-            ss >> x0 >> x1 >> y0 >> y1 >> z0 >> z1;
-            fig.push_back(new cutBox(x0,x1,y0,y1,z0,z1));
+            ss >> cxbox >> cx1box >> cybox >> cy1box >> czbox >> cz1box;
+            fig.push_back(new cutBox(cxbox,cx1box,cybox,cy1box,czbox,cz1box));
         }
 
        else if(s.compare("putsphere")== 0){
-            std::cout << "ALOOOOO " ;
+
             int xsphere, ysphere, zsphere, raiosphere;
             float rsphere, gsphere, bsphere, asphere;
 
             ss >> xsphere >> ysphere >> zsphere >> raiosphere >> rsphere >> gsphere >> bsphere >> asphere;
-            fig.push_back(new putSphere(xsphere,ysphere,zsphere,raiosphere,rsphere,gsphere,bsphere,asphere));
+            fig.push_back(new putSphere(zsphere,ysphere,xsphere,raiosphere,rsphere,gsphere,bsphere,asphere));
         }
 
        else if(s.compare("cutsphere")== 0){
-            ss >> x0 >> y0 >> z0 >> raio >> r >> g >> b >> a;
-            fig.push_back(new cutSphere(x0,y0,z0,raio));
+            int cxsphere, cysphere, czsphere, craiosphere;
+
+            ss >> cxsphere >> cysphere >>czsphere >> craiosphere;
+            fig.push_back(new cutSphere(czsphere,cysphere,cxsphere,craiosphere));
         }
 
        else if(s.compare("putellipsoid") == 0){
@@ -99,13 +102,15 @@ int main()
             float relli,gelli,belli,aelli;
 
             ss >> xelli >> yelli >> zelli >> xraioelli >> yraioelli >> zraioelli >> relli >> gelli >> belli >> aelli;
-            fig.push_back(new putEllipsoid(xelli,yelli,zelli,xraioelli,yraioelli,zraioelli,relli,gelli,belli,aelli));
+            fig.push_back(new putEllipsoid(zelli,yelli,xelli,zraioelli,yraioelli,xraioelli,relli,gelli,belli,aelli));
         }
 
        else if(s.compare("cutellipsoid") == 0){
-            ss >> x0 >> y0 >> z0 >> raiox >> raioy >> raioz;
-            fig.push_back(new cutEllipsoid(x0,y0,z0,raiox,raioy,raioz));
+            int cxelli,cyelli,czelli,cxraioelli,cyraioelli,czraioelli;
 
+
+            ss >> cxelli >> cyelli >> czelli >> cxraioelli >> cyraioelli >> czraioelli;
+            fig.push_back(new cutEllipsoid(czelli,cyelli,cxelli,czraioelli,cyraioelli,cxraioelli));
         }
 
         else{

@@ -4,7 +4,7 @@ putSphere::putSphere(int _xcenter, int _ycenter, int _zcenter, int _radius,float
 
     xcenter = _xcenter;  ycenter = _ycenter;  zcenter = _zcenter; radius = _radius;
     r = _r;   b = _b;  g = _g;  a = _a;
-    std::cout << "aaaaaa";
+
 }
 
 void putSphere::draw(Sculptor &s){
