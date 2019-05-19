@@ -7,7 +7,7 @@ class FiguraGeometrica
 public:
     FiguraGeometrica();
     virtual ~FiguraGeometrica();
-    virtual void draw() = 0;
+    virtual void draw(Sculptor& t) = 0;
 };
 
 #endif // FIGURAGEOMETRICA_H

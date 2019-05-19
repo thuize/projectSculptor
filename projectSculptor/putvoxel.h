@@ -1,6 +1,5 @@
 #ifndef PUTVOXEL_H
 #define PUTVOXEL_H
-#include "sculptor.h"
 #include "figurageometrica.h"
 
 

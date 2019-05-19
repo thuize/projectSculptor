@@ -9,9 +9,8 @@
  */
 #include "sculptor.h"
 #include <iostream>
-#include <fstream>
 #include <string>
-using std::ofstream;
+using std::fstream;
 
 /**
  * @details	Construtor da classe "sculptor".
@@ -181,69 +180,68 @@ void Sculptor::writeVECT(string filename)
  */
 void Sculptor::writeOFF(string filename)
 {
-    ofstream outfile(filename);
+    ofstream fout;
 
-    int nVoxel = 0;//contador de voxel
-    int f = 0;//face
 
-    //Verificar se o arquivo foi aberto
-    if (!outfile.is_open()) {
-        std::cout << "Erro ao abrir o arquivo \n";
-        return;
+    fout.open("./"+filename+".off");
+    if(fout.is_open() == false)
+    {
+        std::cout << "arquivo nao foi aberto\n";
+        exit(1);
     }
 
-    //Escreve a primeira linha contendo o formato do arquivo
-    outfile << "OFF\n";
+    fout<<"OFF"<<endl;
 
-    //Percorre a matriz para saber a quantidade de voxels ativos
-    for (int k = 0; k < nz; k++){
-        for (int i = 0; i < nx; i++){
-            for (int j = 0; j < ny; j++){
-                if (v[k][i][j].isOn){
-                    nVoxel++;
+    int nvoxels = 0;
+    for(int i = 0; i<nz; i++){
+        for(int j = 0; j<ny; j++){
+            for(int k = 0; k<nx; k++){
+                if(v[i][j][k].isOn){
+                    nvoxels = nvoxels+1;
+                }
+            }
+        }
+    }
+    fout<<nvoxels*8<<" "<<nvoxels*6<<" 0"<<endl;
+    float vRadius=0.5f;
+    for(int i = 0; i<nz; i++){
+        for(int j = 0; j<ny; j++){
+            for(int k = 0; k<nx; k++){
+                if(v[i][j][k].isOn){
+                    fout<<(float)i-vRadius<<" "<<(float)j+vRadius<<" "<<(float)k-vRadius<<endl;
+                    fout<<(float)i-vRadius<<" "<<(float)j-vRadius<<" "<<(float)k-vRadius<<endl;
+                    fout<<(float)i+vRadius<<" "<<(float)j-vRadius<<" "<<(float)k-vRadius<<endl;
+                    fout<<(float)i+vRadius<<" "<<(float)j+vRadius<<" "<<(float)k-vRadius<<endl;
+                    fout<<(float)i-vRadius<<" "<<(float)j+vRadius<<" "<<(float)k+vRadius<<endl;
+                    fout<<(float)i-vRadius<<" "<<(float)j-vRadius<<" "<<(float)k+vRadius<<endl;
+                    fout<<(float)i+vRadius<<" "<<(float)j-vRadius<<" "<<(float)k+vRadius<<endl;
+                    fout<<(float)i+vRadius<<" "<<(float)j+vRadius<<" "<<(float)k+vRadius<<endl;
                 }
             }
         }
     }
 
-    //Escrevendo o número de vértices, faces e arestas(padrão como 0)
-    outfile << 8 * nVoxel << " " << 6 * nVoxel << " 0\n";
 
-    //Escrevendo as coordenadas dos vértices
-    for (int k = 0; k < nz; k++){
-        for (int j = 0; j < nx; j++){
-            for (int i = 0; i < ny; i++){
-                if (v[k][j][i].isOn){
-                    outfile << i-0.5 << " " << j+0.5 << " " << k-0.5 << "\n"
-                            << i-0.5 << " " << j-0.5 << " " << k-0.5 << "\n"
-                            << i+0.5 << " " << j-0.5 << " " << k-0.5 << "\n"
-                            << i+0.5 << " " << j+0.5 << " " << k-0.5 << "\n"
-                            << i-0.5 << " " << j+0.5 << " " << k+0.5 << "\n"
-                            << i-0.5 << " " << j-0.5 << " " << k+0.5 << "\n"
-                            << i+0.5 << " " << j-0.5 << " " << k+0.5 << "\n"
-                            << i+0.5 << " " << j+0.5 << " " << k+0.5 << "\n";
+    //printing the order of connection of 4 vertices to define a face (there will be 6 faces for each voxel)
+    int vcn = 0; //vertex count for each activated vertex
+    for(int i = 0; i<nz; i++){
+        for(int j = 0; j<ny; j++){
+            for(int k = 0; k<nx; k++){
+                if(v[i][j][k].isOn){
+                    //int vcn = vc*8; //vertex count multipled by 8, so that we jump 8 vertices in our printing every time we change voxel
+
+                    fout<<"4 "<<vcn+0<<" "<<vcn+3<<" "<<vcn+2<<" "<<vcn+1<<" "<<v[i][j][k].red<<" "<<v[i][j][k].green<<" "<<v[i][j][k].blue<<" "<<v[i][j][k].transparency<<endl;
+                    fout<<"4 "<<vcn+4<<" "<<vcn+5<<" "<<vcn+6<<" "<<vcn+7<<" "<<v[i][j][k].red<<" "<<v[i][j][k].green<<" "<<v[i][j][k].blue<<" "<<v[i][j][k].transparency<<endl;
+                    fout<<"4 "<<vcn+0<<" "<<vcn+1<<" "<<vcn+5<<" "<<vcn+4<<" "<<v[i][j][k].red<<" "<<v[i][j][k].green<<" "<<v[i][j][k].blue<<" "<<v[i][j][k].transparency<<endl;
+                    fout<<"4 "<<vcn+0<<" "<<vcn+4<<" "<<vcn+7<<" "<<vcn+3<<" "<<v[i][j][k].red<<" "<<v[i][j][k].green<<" "<<v[i][j][k].blue<<" "<<v[i][j][k].transparency<<endl;
+                    fout<<"4 "<<vcn+3<<" "<<vcn+7<<" "<<vcn+6<<" "<<vcn+2<<" "<<v[i][j][k].red<<" "<<v[i][j][k].green<<" "<<v[i][j][k].blue<<" "<<v[i][j][k].transparency<<endl;
+                    fout<<"4 "<<vcn+1<<" "<<vcn+2<<" "<<vcn+6<<" "<<vcn+5<<" "<<v[i][j][k].red<<" "<<v[i][j][k].green<<" "<<v[i][j][k].blue<<" "<<v[i][j][k].transparency<<endl;
+
+                    vcn = vcn+8;
                 }
             }
         }
     }
-
-    for (int k = 0; k < nz; k++){
-        for (int i = 0; i < nx; i++){
-            for (int j = 0; j < ny; j++){
-                if (v[k][i][j].isOn){
-                    f = 8*f;
-                    outfile << "4 " << f+0 << " " << f+3 << " " << f+2 << " " << f+1 << " " << v[k][i][j].red << " " << v[k][i][j].green << " " << v[k][i][j].blue << " " << v[k][i][j].transparency << "\n"
-                            << "4 " << f+4 << " " << f+5 << " " << f+6 << " " << f+7 << " " << v[k][i][j].red << " " << v[k][i][j].green << " " << v[k][i][j].blue << " " << v[k][i][j].transparency << "\n"
-                            << "4 " << f+0 << " " << f+1 << " " << f+5 << " " << f+4 << " " << v[k][i][j].red << " " << v[k][i][j].green << " " << v[k][i][j].blue << " " << v[k][i][j].transparency << "\n"
-                            << "4 " << f+0 << " " << f+4 << " " << f+7 << " " << f+3 << " " << v[k][i][j].red << " " << v[k][i][j].green << " " << v[k][i][j].blue << " " << v[k][i][j].transparency << "\n"
-                            << "4 " << f+3 << " " << f+7 << " " << f+6 << " " << f+2 << " " << v[k][i][j].red << " " << v[k][i][j].green << " " << v[k][i][j].blue << " " << v[k][i][j].transparency << "\n"
-                            << "4 " << f+1 << " " << f+2 << " " << f+6 << " " << f+5 << " " << v[k][i][j].red << " " << v[k][i][j].green << " " << v[k][i][j].blue << " " << v[k][i][j].transparency << "\n";
-                    f = f/8+1;
-                }
-            }
-        }
-    }
-
-    outfile.close();
-    std::cout << "Arquivo OFF criado\n";
 }
+
+

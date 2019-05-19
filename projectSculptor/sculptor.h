@@ -13,10 +13,12 @@
 #include<iostream>
 #include<fstream>
 #include<string>
+#include <cstdlib>
+#include <sstream>
 using std::string;
 using std::endl;
 using std::ofstream;
-
+using std::ifstream;
 /**
  * @struct Voxel
  * @brief Struct que representa um Voxel
@@ -24,9 +26,9 @@ using std::ofstream;
  * de informações: a cor do voxel, sua transparência e se ele deverá ser incluído ou não no modelo digital que representa a escultura.
  */
 struct Voxel {
-  float red,green,blue; // Colors
-  float transparency; // Transparency
-  bool isOn; // Included or not
+  float red,green,blue;
+  float transparency;
+  bool isOn;
 };
 
 /**
@@ -38,23 +40,18 @@ struct Voxel {
  */
 class Sculptor{
 protected:
-    Voxel ***v; // 3D matrix
-    int nx,ny,nz; // Dimensions
-    float r,g,b,a; // Current drawing color
+    Voxel ***v;
+    int nx,ny,nz;
+    float r,g,b,a;
 public:
     Sculptor(int _nz, int _ny, int _nx);
     ~Sculptor();
     void setColor(float _r, float _g, float _b, float _a);
     void putVoxel(int x, int y, int z);
     void cutVoxel(int x, int y, int z);
-    //void putBox(int x0, int x1, int y0, int y1, int z0, int z1);
-    //void cutBox(int x0, int x1, int y0, int y1, int z0, int z1);
-    //void putSphere(int xcenter, int ycenter, int zcenter, int radius);
-    //void cutSphere(int xcenter, int ycenter, int zcenter, int radius);
-    //void putEllipsoid(int xcenter, int ycenter, int zcenter, int rx, int ry, int rz);
-    //void cutEllipsoid(int xcenter, int ycenter, int zcenter, int rx, int ry, int rz);
     void writeOFF(string filename);
     void writeVECT(string filename);
+
 
 };
 
